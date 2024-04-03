@@ -1,5 +1,8 @@
 package main;
 
+/**
+ * 
+ */
 public class Memory {
 	private Integer memory[];
 	private final int MAX_MEMORY = 100;
@@ -10,12 +13,28 @@ public class Memory {
 		this.memory = new Integer [this.MAX_MEMORY];
 	}
 	
+	/**
+	 * 
+	 * @param pos
+	 * @param value
+	 * @return
+	 */
 	public boolean write(int pos, String value) {
 		return true;
 	}
+	
+	/**
+	 * 
+	 * @param pos
+	 * @return
+	 */
 	public Integer read(int pos) {
 		return pos;
 	}
+	
+	/**
+	 * 
+	 */
 	public void resize() {
 		
 	}
