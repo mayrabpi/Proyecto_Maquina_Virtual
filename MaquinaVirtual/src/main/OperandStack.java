@@ -18,11 +18,11 @@ public class OperandStack {
 	}
 	
 	/**
-	 * 
+	 * retorna 
 	 * @return
 	 */
 	public String tooString() {
-		return " ";
+		return "";
 	}
 	
 	/**
@@ -30,32 +30,31 @@ public class OperandStack {
 	 * @return false o true 
 	 */
 	public boolean isEmpty() {
-		if(this.num_elem>0)
-		return false;
-		else
-			return true;
+		return this.num_elem==0;
 	}
 	
 	/**
 	 * introduce un elemento en el array 
 	 * @param numero
 	 */
-	public void push(int numero) {
+	public boolean push(int numero) {
 		if(this.num_elem<this.MAX_STACK) {
 			numero = this.stack[this.num_elem];
 			this.num_elem++;
+			return true;
 		}else {
 			System.out.println("No es podible introducir mas operaciones");
+			return false;
 		}
 		
 	}
 	
 	/**
-	 * coge el elemento en la ultima posicion de num_elem ¿esta vacia? si no esta vacia 
+	 * retorna  el elemento en la ultima posicion de num_elem ¿esta vacia? si no esta vacia 
 	 * @return num_elem lo que hay en la posicion num_elem
 	 */
 	public int pop() {
-		return this.num_elem;
+		return this.num_elem-1;
 	}
 
 }
