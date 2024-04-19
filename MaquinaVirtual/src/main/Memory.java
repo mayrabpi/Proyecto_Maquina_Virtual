@@ -14,8 +14,9 @@ public class Memory {
 	 * constructor
 	 */
 	public Memory() {
-		this.size=100;
+		this.size=10;
 		this.memory = new Integer [this.MAX_MEMORY];
+		this.empty=true;
 	}
 	
 	/**
@@ -26,10 +27,11 @@ public class Memory {
 	 * llamar resize 
 	 */
 	public boolean write(int pos, int value) {
-		this.resize(pos);
+		
 		if(pos>=0) {
-		this.memory[pos]= value;
-		return true;
+			this.resize(pos);
+		    this.memory[pos]= value;
+		    return true;
 		}else
 			return false;
 	}
@@ -40,13 +42,22 @@ public class Memory {
 	 * @return el valor que haya en la posicion pos, si en pos hay null se devuelve -1
 	 */
 	public Integer read(int pos) {
-		return pos;
+		if(this.memory[pos]==null) {
+			return -1;
+		}else
+		    return this.memory[pos];
 	}
 	
 	/**
 	 * multiplica el tamaño del array por 2 , crea un nuevo array con el doble del tamaño del array
 	 */
 	public void resize(int posicion) {
+		if(posicion>=this.size) {
+			this.empty=false;
+			Integer[] newMemory = new Integer [posicion*2];
+			newMemory =this.memory;
+			this.memory=newMemory;
+		}
 		
 	}
 	

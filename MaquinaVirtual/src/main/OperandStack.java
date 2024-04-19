@@ -6,14 +6,14 @@ package main;
  */
 public class OperandStack {
 	private int [] stack;
-	private final int MAX_STACK=20;
+	private final int MAX_STACK=100;
 	private int num_elem;
 	
 	/**
 	 * constructor
 	 */
 	public OperandStack() {
-		this.num_elem=1;
+		this.num_elem=0;
 		this.stack = new int [this.MAX_STACK];		
 	}
 	
@@ -30,7 +30,12 @@ public class OperandStack {
 	 * @return false o true 
 	 */
 	public boolean isEmpty() {
-		return this.num_elem==0;
+		if(this.num_elem>0)
+			return false;
+		else
+			return true;
+			
+		
 	}
 	
 	/**
@@ -42,10 +47,9 @@ public class OperandStack {
 			numero = this.stack[this.num_elem];
 			this.num_elem++;
 			return true;
-		}else {
-			System.out.println("No es podible introducir mas operaciones");
+		}else 
 			return false;
-		}
+		
 		
 	}
 	
@@ -54,7 +58,12 @@ public class OperandStack {
 	 * @return num_elem lo que hay en la posicion num_elem
 	 */
 	public int pop() {
-		return this.num_elem-1;
+		int aux = this.stack[this.num_elem];
+		if(isEmpty()==false) {
+			this.num_elem--;
+			return aux;
+		}else 
+			return-1;	
 	}
 
 }
