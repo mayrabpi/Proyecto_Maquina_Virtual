@@ -14,7 +14,7 @@ public class Memory {
 	 * constructor
 	 */
 	public Memory() {
-		this.size=10;
+		this.size=2;
 		this.memory = new Integer [this.MAX_MEMORY];
 		this.empty=true;
 	}
@@ -26,14 +26,13 @@ public class Memory {
 	 * @return
 	 * llamar resize 
 	 */
-	public boolean write(int pos, int value) {
-		
-		if(pos>=0) {
+	public void write(int pos, int value) {
+		if(pos>=this.size)
 			this.resize(pos);
-		    this.memory[pos]= value;
-		    return true;
-		}else
-			return false;
+		
+		    this.memory[pos]=value;
+		    empty =false;
+		
 	}
 	
 	/**
@@ -52,16 +51,36 @@ public class Memory {
 	 * multiplica el tamaño del array por 2 , crea un nuevo array con el doble del tamaño del array
 	 */
 	public void resize(int posicion) {
-		if(posicion>=this.size) {
+	int newSize= posicion*2;
+	Integer[]newMemory =new Integer[newSize];
+	for(int i=0; i<this.size;i++) {
+		newMemory[i]=this.memory[i];
+	}
+	this.memory=newMemory;
+	this.size=newSize;
+	}
+	
+	public String toString() {
+		String cadena="Memoria:";
+		if(this.empty) {
+			cadena+="<vacia>";
+		}else {
+			for(int i =0;i<this.size;i++) {
+				if(this.memory[i]!=null)
+					cadena+= "[" + i+ "]:[" + this.memory[i]+ "]";
+			}
+		}
+		return cadena;
+		
+	
+	
+
+	}
+}
+/*
+ * if(posicion>=this.size) {
 			this.empty=false;
 			Integer[] newMemory = new Integer [posicion*2];
 			newMemory =this.memory;
 			this.memory=newMemory;
-		}
-		
-	}
-	
-	
-
-
-}
+		}*/

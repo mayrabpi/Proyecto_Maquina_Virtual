@@ -22,8 +22,17 @@ public class OperandStack {
 	 * @return
 	 */
 	public String tooString() {
-		return "";
+		String cadena="Pila";
+		if(isEmpty()==true) {
+			cadena+= "<vacia>";
+		}else {
+			for(int i=0; i< this.num_elem;i++)
+				cadena+=" "+ this.stack[i];
+		}
+		return cadena;
+			
 	}
+		
 	
 	/**
 	 * pregunta si la pila esta vacia 
@@ -33,9 +42,7 @@ public class OperandStack {
 		if(this.num_elem>0)
 			return false;
 		else
-			return true;
-			
-		
+			return true;		
 	}
 	
 	/**
