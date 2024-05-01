@@ -22,10 +22,6 @@ public class CPU {
 		return memoria.toString() + " " + pila.tooString();
 	}
 	
-	public boolean execute (ByteCode bc) {
-		return true;
-	}
-	
 	public boolean push(int number) {
 		this.pila.push(number);
 		return true;
@@ -75,6 +71,26 @@ public class CPU {
 			int subCima=pila.pop();
 			push(cima/subCima);
 			exito = true;
+		}
+		return exito;
+	}
+	public boolean execute (ByteCode instruccion) {
+		boolean exito =false;
+		switch(instruccion.getBytecode()) {
+		case ADD:
+			exito = add();
+			break;
+		case SUB:
+			exito = sub();
+			break;
+		case MUL:
+			exito = mul();
+			break;
+		case DIV:
+			exito = div();
+			break;
+		default:
+			exito = false;		
 		}
 		return exito;
 	}

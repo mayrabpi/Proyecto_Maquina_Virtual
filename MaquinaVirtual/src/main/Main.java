@@ -12,6 +12,7 @@ public class Main {
 		OperandStack pruebas = new OperandStack();
         Memory pruebas1 = new Memory();
         ByteCodeParser p = new ByteCodeParser();
+        CPU prueba4 = new CPU();
 		
 		pruebas1.write(1, 2);
 		pruebas1.write(2, 3);
@@ -27,8 +28,9 @@ public class Main {
 	
 		
 		System.out.println(p.parse("ADD"));
-		System.out.println(pruebas.getCima());
+		System.out.println(pruebas.tooString());
 		System.out.println(pruebas1.tooString());
+		System.out.println(prueba4.toString());
 		
 	
 

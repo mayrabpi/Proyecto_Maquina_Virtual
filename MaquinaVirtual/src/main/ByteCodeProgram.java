@@ -1,8 +1,10 @@
 package main;
 
 public class ByteCodeProgram {
-	//private ByteCode[] program; 
-	//
+	private ByteCode[] program; 
+	private int num_elem;
+	private int size;
+	
 	//num_elem
 	//size
 	//metodo runProgram recorre el array los hasta num_elems -1 devuelve un string this.program[i].tooString(); concatena un string gigante recibe la cpu

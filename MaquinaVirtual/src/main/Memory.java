@@ -40,7 +40,7 @@ public class Memory {
 	 * @param recibe la posicion pos
 	 * @return el valor que haya en la posicion pos, si en pos hay null se devuelve -1
 	 */
-	public Integer read(int pos) {
+	public int read(int pos) {
 		if(this.memory[pos]==null) {
 			return -1;
 		}else

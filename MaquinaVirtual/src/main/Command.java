@@ -1,6 +1,16 @@
 package main;
 
 public class Command {
+	private ENUM_COMMAND comand;
+	private ByteCode instruccion;
+	private int replace;
+	
+	public Command (ENUM_COMMAND comand, ByteCode n) {
+		
+	}
+	public Command (ENUM_COMMAND comand, int num) {
+		
+	}
 
 }
 //tiene 3 atributos 

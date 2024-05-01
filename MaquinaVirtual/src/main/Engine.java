@@ -1,11 +1,32 @@
 package main;
 
+import java.util.Scanner;
+
 public class Engine {
-	//private ByteCodeProgram program; new bytecode program
-	//private boolean fin; constructora a false
+	private ByteCodeProgram program;
+	private boolean fin;
+	private CPU n;
+	private Scanner entrada;
+	
+	public Engine(){
+		this.program= new ByteCodeProgram();
+		this.fin= false;
+		this.n = new CPU();
+		//this.entrada = new Scanner();
+	}
+	public void start() {
+		//Command co = new Command();
+		while(!this.fin) {
+			
+		}
+	}
+	
 	
 
 }
+//private ByteCodeProgram program; new bytecode program
+	//private boolean fin; constructora a false
+	
 //atributo de tipo cpu new cpu 
 //atributo Scanner 
 //metodo void start entra en un bucle while(!this.fin) recoge lo que se introduze por pantalla ejem usuario introduce un comando llamamos al commandParser
