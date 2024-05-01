@@ -1,7 +1,7 @@
 package main;
 
 /**
- * 
+ * Clase que implementa las distintas instrucciones bytecode que puede manejar nuestra maquina virtual
  */
 public class ByteCode {
 	private ENUM_BYTECODE name;
@@ -26,7 +26,10 @@ public class ByteCode {
 	public int getParam() {
 		return this.param;
 	}
+	public ENUM_BYTECODE getName() {
+		return this.name;
+	}
 
 }
-//METODO TOESTRING 
+//METODO TOSTRING  devuelve el 
 //metodo parser

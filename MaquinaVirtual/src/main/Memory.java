@@ -1,7 +1,7 @@
 package main;
 
 /**
- * clase Memory
+ * clase Memory representa la memoria de la maquina 
  * @author Mayra
  */
 public class Memory {
@@ -60,14 +60,14 @@ public class Memory {
 	this.size=newSize;
 	}
 	
-	public String toString() {
+	public String tooString() {
 		String cadena="Memoria:";
 		if(this.empty) {
 			cadena+="<vacia>";
 		}else {
 			for(int i =0;i<this.size;i++) {
 				if(this.memory[i]!=null)
-					cadena+= "[" + i+ "]:[" + this.memory[i]+ "]";
+					cadena+= "[" +i+ "]:[" + this.memory[i]+ "]" + ",";
 			}
 		}
 		return cadena;

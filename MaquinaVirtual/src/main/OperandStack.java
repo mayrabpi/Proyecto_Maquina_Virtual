@@ -6,7 +6,7 @@ package main;
  */
 public class OperandStack {
 	private int [] stack;
-	private final int MAX_STACK=100;
+	private final int MAX_STACK=20;
 	private int num_elem;
 	
 	/**
@@ -22,18 +22,15 @@ public class OperandStack {
 	 * @return
 	 */
 	public String tooString() {
-		String cadena="Pila";
-		if(isEmpty()==true) {
+		String cadena="Pila: ";
+		if(this.isEmpty()) {
 			cadena+= "<vacia>";
 		}else {
 			for(int i=0; i< this.num_elem;i++)
 				cadena+=" "+ this.stack[i];
 		}
-		return cadena;
-			
-	}
-		
-	
+		return cadena;		
+	}	
 	/**
 	 * pregunta si la pila esta vacia 
 	 * @return false o true 
@@ -49,14 +46,11 @@ public class OperandStack {
 	 * introduce un elemento en el array 
 	 * @param numero
 	 */
-	public boolean push(int numero) {
-		if(this.num_elem<this.MAX_STACK) {
-			numero = this.stack[this.num_elem];
-			this.num_elem++;
-			return true;
-		}else 
-			return false;
-		
+	public void push(int numero) {
+		if(this.num_elem<this.MAX_STACK) { 
+			 this.stack[this.num_elem]=numero;
+			 this.num_elem++;
+		}
 		
 	}
 	
@@ -71,6 +65,11 @@ public class OperandStack {
 			return aux;
 		}else 
 			return-1;	
+	}
+	
+	public int getCima() {
+			
+       return this.stack[this.num_elem-1];
 	}
 
 }
