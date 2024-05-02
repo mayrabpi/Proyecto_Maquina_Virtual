@@ -1,15 +1,26 @@
 package main;
-
+/**
+ * clase que representa los distintos comandos que puede utilizar un usuario, para representar el comando necesitamos los siguientes atributos:
+ */
 public class Command {
 	private ENUM_COMMAND comand;
-	private ByteCode instruccion;
-	private int replace;
+	private ByteCode instruccion;//toma valor haciendo referencia a NEWINST
+	private int replace;//toma valor haciendo haciendo referencia a REPLACE
 	
 	public Command (ENUM_COMMAND comand, ByteCode n) {
 		
 	}
 	public Command (ENUM_COMMAND comand, int num) {
 		
+	}
+	/**
+	 * metodo encargado de ejecutar el comando, dando la orden correspondiente a engine
+	 * si el comando es incorrecto el metodo devuelve false , en otro caso devuelve true
+	 * @param engine
+	 * @return
+	 */
+	public boolean execute(Engine engine) {
+		return true;
 	}
 
 }

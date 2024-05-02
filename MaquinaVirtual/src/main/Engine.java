@@ -1,22 +1,27 @@
 package main;
-
 import java.util.Scanner;
-
+/**
+ * Representa el bucle de control de la aplicacion 
+ */
 public class Engine {
-	private ByteCodeProgram program;
-	private boolean fin;
+	private ByteCodeProgram program;//representa el programa actual
+	private boolean end;//representa la terminacion de la aplicacion
 	private CPU n;
 	private Scanner entrada;
 	
 	public Engine(){
 		this.program= new ByteCodeProgram();
-		this.fin= false;
+		this.end= false;
 		this.n = new CPU();
 		//this.entrada = new Scanner();
 	}
+	/**
+	 * metodo que se encarga de leer sucesivamente los comandos introducidos por el usuario
+	 * hasta recibir el comando QUIT
+	 */
 	public void start() {
 		//Command co = new Command();
-		while(!this.fin) {
+		while(!this.end) {
 			
 		}
 	}

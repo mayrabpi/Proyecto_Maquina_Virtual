@@ -1,11 +1,11 @@
 package main;
 
 /**
- * clase OperandStack
+ * clase OperandStack implementa la pila de operandos donde se van apilando elementos de tipo entero 
  * @author Mayra
  */
 public class OperandStack {
-	private int [] stack;
+	private int [] stack;// donde se almacenan los operandos 
 	private final int MAX_STACK=20;
 	private int num_elem;
 	

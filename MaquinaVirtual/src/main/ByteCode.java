@@ -5,7 +5,7 @@ package main;
  */
 public class ByteCode {
 	private ENUM_BYTECODE name;
-	private int param;
+	private int param;//necesario para las instrucciones PUSH, STORE, LOAD
 	
 	/**
 	 * 

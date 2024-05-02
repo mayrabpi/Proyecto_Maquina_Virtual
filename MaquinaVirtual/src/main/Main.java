@@ -12,7 +12,14 @@ public class Main {
 		OperandStack pruebas = new OperandStack();
         Memory pruebas1 = new Memory();
         ByteCodeParser p = new ByteCodeParser();
-        CPU prueba4 = new CPU();
+        CPU cpu = new CPU();
+        ENUM_BYTECODE ADD = null;
+        ByteCode code = new ByteCode(ADD);
+       
+      
+        
+        
+        
 		
 		pruebas1.write(1, 2);
 		pruebas1.write(2, 3);
@@ -22,15 +29,17 @@ public class Main {
 		pruebas.push(2);
 		pruebas.push(3);
 		
+		
+		
 
 
 
 	
 		
-		System.out.println(p.parse("ADD"));
+		System.out.println(p.parse(""));
 		System.out.println(pruebas.tooString());
 		System.out.println(pruebas1.tooString());
-		System.out.println(prueba4.toString());
+		System.out.println(cpu.tooString());
 		
 	
 

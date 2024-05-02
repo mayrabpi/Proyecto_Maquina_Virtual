@@ -5,7 +5,7 @@ package main;
  * @author Mayra
  */
 public class Memory {
-	private Integer memory[];
+	private Integer memory[];//alamacena los valores 
 	private final int MAX_MEMORY = 100;
 	private int size;
 	private boolean empty;

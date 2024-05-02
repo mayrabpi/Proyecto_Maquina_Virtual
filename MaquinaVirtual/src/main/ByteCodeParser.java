@@ -14,7 +14,7 @@ public class ByteCodeParser {
 	/**
 	 * Metodo que devuelve el bytecode almacenado en s  o bien null si s no representa ningun comando
 	 * @param s
-	 * @return
+	 * @return el byteCode almacenado en s o bien null si s no representa ningun comando
 	 */
 	public static ByteCode parse(String s) {
 		ENUM_BYTECODE code = null;
