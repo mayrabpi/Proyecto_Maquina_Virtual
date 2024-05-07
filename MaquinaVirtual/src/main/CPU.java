@@ -45,7 +45,11 @@ public class CPU {
 		return exito;
 		
 	}
-	
+	/**
+	 * añade a la memoria 
+	 * @param pos
+	 * @return
+	 */
 	public boolean store(int pos) {
 		boolean exito=false;
 		if(this.pila.getCima()>0 && pos >=0) {
@@ -147,8 +151,11 @@ public class CPU {
 	public void run() {
 		this.halt= true;
 	}
-
+		
 }
+	
+
+
 //erase resetea el array de operandStack 
 //metodo cpu erase limpia la memoria y la pila 
 //metodo run cpu pone el atributo salir a false si es true esta parada 

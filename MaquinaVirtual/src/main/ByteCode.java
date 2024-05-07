@@ -27,7 +27,9 @@ public class ByteCode {
 		return this.param;
 	}
 	
+	
 
 }
+
 //METODO TOSTRING  devuelve el 
 //metodo parser

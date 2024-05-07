@@ -13,7 +13,7 @@ public class Engine {
 		this.program= new ByteCodeProgram();
 		this.end= false;
 		this.n = new CPU();
-		//this.entrada = new Scanner();
+		this.entrada = new Scanner(System.in);
 	}
 	/**
 	 * metodo que se encarga de leer sucesivamente los comandos introducidos por el usuario
@@ -24,6 +24,12 @@ public class Engine {
 		while(!this.end) {
 			
 		}
+	}
+	public void commandNewIns(ByteCode bc) {
+		
+	}
+	public void commandHelp() {
+		System.out.println("Comienza la ejecución de HELP");
 	}
 	
 	

@@ -46,7 +46,7 @@ public class ByteCodeParser {
 		    		code=null;
 		    	
 		    	if(code!=null) 
-		    		ins = new ByteCode(code);
+		    		return ins = new ByteCode(code);
 		    	break;
 		    case 2:
 		    	if(aux[0].equalsIgnoreCase("PUSH")) {
