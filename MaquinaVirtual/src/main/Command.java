@@ -14,9 +14,9 @@ public class Command {
 		
 	}
 	
-	public Command (ENUM_COMMAND comando, ByteCode n) {
+	public Command (ENUM_COMMAND comando, ByteCode instruccion) {
 		this.comand=comando;
-		this.instruccion=n;
+		this.instruccion=instruccion;
 		
 	}
 	public Command (ENUM_COMMAND comando, int replace) {

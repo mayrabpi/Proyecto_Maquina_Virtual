@@ -3,13 +3,27 @@ package main;
  * clase que representa el programa actual 
  */
 public class ByteCodeProgram {
-	private ByteCode program; 
+	private ByteCode[] program; 
 	private int num_elem;
 	private int size;
 	public ByteCodeProgram() {
-		//this.program = new ByteCode();
+		this.program = new ByteCode[this.num_elem];
 		this.num_elem=0;
 		this.size=0;
+	}
+	public boolean setInstruccion(ByteCode instruccion) {
+		if(this.num_elem<this.program.length) {
+			this.program[this.num_elem]=instruccion;
+			this.num_elem++;
+			return true;
+		}
+		else
+			return false;
+		
+	}
+	public void reset() {
+		 this.program = new ByteCode[this.size];
+		    this.num_elem = 0;
 	}
 	/*public String runProgram(CPU cpu) {
 		String mensaje = "";

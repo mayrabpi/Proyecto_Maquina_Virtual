@@ -14,7 +14,7 @@ public class Memory {
 	 * constructor
 	 */
 	public Memory() {
-		this.size=2;
+		this.size=0;
 		this.memory = new Integer [this.MAX_MEMORY];
 		this.empty=true;
 	}

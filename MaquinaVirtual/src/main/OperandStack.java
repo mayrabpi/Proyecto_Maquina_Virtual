@@ -6,7 +6,7 @@ package main;
  */
 public class OperandStack {
 	private int [] stack;// donde se almacenan los operandos 
-	private final int MAX_STACK=20;//tamaño maximo de la pila 
+	private final int MAX_STACK=100;//tamaño maximo de la pila 
 	private int num_elem;
 	
 	/**
@@ -36,21 +36,24 @@ public class OperandStack {
 	 * @return false o true 
 	 */
 	public boolean isEmpty() {
-		if(this.num_elem>0)
+		if(this.MAX_STACK>0)
 			return false;
 		else
 			return true;		
 	}
 	
 	/**
-	 * introduce un elemento en el array 
-	 * @param numero
+	 * 
+	 * @param numero se añade
+	 * @return retorna true si se ha podido añadir o fañse en caso contrario
 	 */
-	public void push(int numero) {
-		if(this.num_elem<this.MAX_STACK) { 
-			 this.stack[this.num_elem]=numero;
-			 this.num_elem++;
-		}
+	public boolean push(int numero) {
+		if(this.num_elem>=this.MAX_STACK)
+			return false;
+		
+		this.stack[this.num_elem] = numero;
+		this.num_elem++;
+		return true;
 		
 	}
 	
@@ -59,7 +62,7 @@ public class OperandStack {
 	 * @return num_elem lo que hay en la posicion num_elem
 	 */
 	public int pop() {
-		int aux = this.stack[this.num_elem];
+		int aux = this.stack[this.num_elem-1];
 		if(isEmpty()==false) {
 			this.num_elem--;
 			return aux;

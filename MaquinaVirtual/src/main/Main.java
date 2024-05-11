@@ -38,6 +38,7 @@ public class Main {
 		
 		
 		
+		
 
 
 
@@ -46,7 +47,9 @@ public class Main {
 		//System.out.println(cpu.push(4));
 		System.out.println(pruebas.tooString());
 		System.out.println(pruebas1.tooString());
-		System.out.println(code1.parse("PUSH"));
+		System.out.println(pruebas.pop());
+		System.out.println(pruebas1.read(1));
+		
 		
 	
 

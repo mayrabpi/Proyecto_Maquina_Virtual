@@ -1,8 +1,8 @@
 package main;
 
-public class ComandParser {
+public class CommandParser {
 	
-	public ComandParser() {
+	public CommandParser() {
 		
 	}
 	/**

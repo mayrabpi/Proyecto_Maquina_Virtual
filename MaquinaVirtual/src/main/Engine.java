@@ -26,10 +26,20 @@ public class Engine {
 		}
 	}
 	public void commandNewIns(ByteCode bc) {
-		
+		System.out.println("Comienza la ejecución de NEWINST");
+		this.program.setInstruccion(bc);
+	}
+	public void commandReset() {
+		System.out.println("Comienza la ejecución de NEWINST");
+		this.program.reset();
 	}
 	public void commandHelp() {
 		System.out.println("Comienza la ejecución de HELP");
+		System.out.println("HELP: Muestra esta ayuda");
+		System.out.println("QUIT: Cierra la aplicación");
+		System.out.println("NEWINST");
+		System.out.println("RESET");
+		System.out.println("REPLACE");
 	}
 	
 	

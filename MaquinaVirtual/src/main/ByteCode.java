@@ -6,7 +6,13 @@ package main;
 public class ByteCode {
 	private ENUM_BYTECODE name;
 	private int param;//necesario para las instrucciones PUSH, STORE, LOAD
-	
+	/**
+	 * constructor por defecto
+	 * @return
+	 */
+	public int getParam() {
+		return this.param;
+	}
 	/**
 	 * 
 	 * @param name
@@ -23,9 +29,6 @@ public class ByteCode {
 		return this.name;
 	}
 	
-	public int getParam() {
-		return this.param;
-	}
 	
 	
 

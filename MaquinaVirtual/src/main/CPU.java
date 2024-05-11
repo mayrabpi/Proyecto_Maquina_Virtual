@@ -146,7 +146,7 @@ public class CPU {
 		return exito;
 	}
 	/**
-	 * metodi que indica a la cpu que ya queremo salir
+	 * metodo que indica a la cpu que ya queremo salir
 	 */
 	public void run() {
 		this.halt= true;
