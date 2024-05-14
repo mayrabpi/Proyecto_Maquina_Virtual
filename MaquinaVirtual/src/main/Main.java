@@ -13,8 +13,8 @@ public class Main {
         Memory pruebas1 = new Memory();
         ByteCodeParser p = new ByteCodeParser();
         CPU cpu = new CPU();
-        ENUM_BYTECODE ADD = null;
-        ByteCode code = new ByteCode(ADD);
+        
+        ByteCode code = new ByteCode(ENUM_BYTECODE.ADD);
         ByteCodeParser code1 = new ByteCodeParser();
         
        code1.parse("ADD");
@@ -35,6 +35,9 @@ public class Main {
 		cpu.store(4);
 		cpu.push(3);
 		cpu.push(4);
+		cpu.execute(code);
+		
+	
 		
 		
 		
@@ -45,8 +48,8 @@ public class Main {
 	
 		
 		//System.out.println(cpu.push(4));
-		System.out.println(pruebas.tooString());
-		System.out.println(pruebas1.tooString());
+		System.out.println(pruebas.toString());
+		System.out.println(pruebas1.toString());
 		System.out.println(pruebas.pop());
 		System.out.println(pruebas1.read(1));
 		

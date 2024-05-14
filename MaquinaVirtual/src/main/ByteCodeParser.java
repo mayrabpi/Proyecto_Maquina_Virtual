@@ -5,7 +5,7 @@ package main;
  */
 public class ByteCodeParser {
 	private int byteCode;
-	private  static String line=" ";
+	
 	public ByteCodeParser() {
 	
 		
@@ -13,13 +13,13 @@ public class ByteCodeParser {
 	
 	/**
 	 * Metodo que devuelve el bytecode almacenado en s  o bien null si s no representa ningun comando
-	 * @param s
+	 * @param cadena de texto que puede 
 	 * @return el byteCode almacenado en s o bien null si s no representa ningun comando
 	 */
 	public static ByteCode parse(String s) {
 		ENUM_BYTECODE code = null;
 		ByteCode ins =null;
-		String aux[]= line.split("");
+		String aux[]=s.split("");
 		int longitudArray = aux.length;
 		
 		switch (longitudArray) {
@@ -64,9 +64,7 @@ public class ByteCodeParser {
 		    	if(code!=null)
 		    		ins = new ByteCode(code, Integer.parseInt(aux[1]));
 		    	
-		    	break;
-		    	
-		    default:		
+		    	break;		
 		}
 		return ins;
 	}

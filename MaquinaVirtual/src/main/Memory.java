@@ -60,7 +60,7 @@ public class Memory {
 	this.size=newSize;
 	}
 	
-	public String tooString() {
+	public String toString() {
 		String cadena="Memoria:";
 		if(this.empty) {
 			cadena+="<vacia>";

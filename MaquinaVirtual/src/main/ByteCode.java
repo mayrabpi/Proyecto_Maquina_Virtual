@@ -17,11 +17,19 @@ public class ByteCode {
 	public ByteCode (ENUM_BYTECODE name ) {
 		this.name=name;
 	}
+	/**
+	 * 
+	 * @param name
+	 * @param param
+	 */
 	public ByteCode (ENUM_BYTECODE name, int param ) {
 		this.name=name;
 		this.param = param;
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public ENUM_BYTECODE getBytecode() {
 		return this.name;
 	}
@@ -32,6 +40,10 @@ public class ByteCode {
 	public int getParam() {
 		return this.param;
 	}
+	public String toString() {
+		return this.name.toString().toUpperCase() + this.param;
+	}
+	
 	
 	
 	

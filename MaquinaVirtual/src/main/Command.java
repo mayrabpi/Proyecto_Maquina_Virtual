@@ -30,13 +30,30 @@ public class Command {
 	 * @param engine
 	 * @return
 	 */
-	public boolean execute(Engine engine) {
+	public boolean excute ( Engine engine) {
 		if(this.comand == ENUM_COMMAND.REPLACE) {
+			engine.commandReset();		
+		}
+		else if (this.comand == ENUM_COMMAND.NEWINST){
+			engine.commandNewIns(this.instruccion);
+		}
+		else if (this.comand == ENUM_COMMAND.HELP) {
+			engine.commandHelp();
+		}
+		else if (this.comand == ENUM_COMMAND.RUN) {
 			
 		}
+		else if (this.comand == ENUM_COMMAND.QUIT) {
 			
-		return true;
+		}else 
+			return false;
+		
+		return true;		
 	}
+
+			
+		
+	
 
 }
 //tiene 3 atributos 
@@ -54,3 +71,4 @@ public class Command {
 //engine.replace(this.replace);
 //else if (this.command )
 //engine.newInst(this.intruccion)
+

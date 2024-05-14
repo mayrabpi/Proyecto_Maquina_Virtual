@@ -4,6 +4,7 @@ package main;
  */
 public class ByteCodeProgram {
 	private ByteCode[] program; 
+	private CPU cpu =new CPU();
 	private int num_elem;
 	private int size;
 	public ByteCodeProgram() {
@@ -25,21 +26,24 @@ public class ByteCodeProgram {
 		 this.program = new ByteCode[this.size];
 		    this.num_elem = 0;
 	}
-	/*public String runProgram(CPU cpu) {
+	public String toString() {
+	
+		return "Programa almacenado";
+	}
+	public String runProgram(CPU cpu) {
 		String mensaje = "";
 		for(int i=0; i <this.num_elem; i++) {
-			if(!cpu.isHalt()&& cpu.execute(this.program[i]))
-			//bla bla
-			 * else if (!cpu.isHalt(){
-			 *bla bla
-			 *}
-			 *}
-			 *cpu.erase();
-			 *cpu.runCPU();
-			 *return mensaje	        
-			
-		}*/
-	//}
+			if(!cpu.isHalt()&& cpu.execute(this.program[i])) {
+			System.out.println("El estado de la máquina tras ejecutar el byteco");
+			}
+			else if (!cpu.isHalt()){
+			 //bla bla
+			 }	
+		}
+		cpu.erase();
+		 cpu.runCPU();
+		 return mensaje;   
+	}
 	//num_elem
 	//size
 	//metodo runProgram recorre el array los hasta num_elems -1 devuelve un string this.program[i].tooString(); concatena un string gigante recibe la cpu

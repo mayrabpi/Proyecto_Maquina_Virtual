@@ -19,7 +19,7 @@ public class CPU {
 		
 	}
 	public String tooString() {
-		return memoria.toString() + " " + pila.tooString();
+		return memoria.toString() + " " + pila.toString();
 	}
 	/**
 	 * apila en la pila de operandos el entero number
@@ -91,7 +91,6 @@ public class CPU {
 	 * @return
 	 */
 	public boolean restaPila() {
-	
 		if(this.pila.getCima()>1) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
@@ -106,7 +105,6 @@ public class CPU {
 	 * @return
 	 */
 	public boolean multiplicaPila(){
-	
 		if(this.pila.getCima()>1) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
@@ -136,43 +134,59 @@ public class CPU {
 	 * @return si la ejecucion tiene exito retorna instruccion, si genera un erros devuelve false
 	 */
 	public boolean execute (ByteCode instruccion) {
-		boolean resultado = false;
+	
 		switch(instruccion.getBytecode()) {
 		case ADD:
-			return this.sumaPila();
-		case MUL:
-			return this.multiplicaPila();
-		case DIV:
-			return this.dividePila();
-		case OUT:
-			return this.out();
-		case HALT:
-			return this.halt;
-		case LOAD:
-			return this.load(instruccion.getParam());
-		case STORE:
-			return this.store(instruccion.getParam());
-		case PUSH:
-			return this.push(instruccion.getParam());
-		default:
-			return false;
-			
-			
+			return sumaPila();
 		
+		case MUL:
+			return multiplicaPila();
+		
+		case DIV:
+			return dividePila();
+			
+		case OUT:
+			return out();
+		
+		case HALT:
+			return halt;
+	
+		case LOAD:
+			return load(instruccion.getParam());
+			
+		case STORE:
+			return store(instruccion.getParam());
+			
+		case PUSH:
+			return push(instruccion.getParam());
+		default:
+			return false;	
 		}
+		
 		}
 	/**
-	 * metodo que indica a la cpu que ya queremo salir
+	 * 
 	 */
-	public void runCpu() {
-		this.halt=true;
-		
+	public void runCPU() {
+	   this.halt= false;		
 	}
-	
+	/**
+	 * este metodo vacia la memoria y la pila 
+	 */
 	public void erase() {
 		this.memoria= new Memory();
 		this.pila = new OperandStack();
 	}
+	
+	/**
+	 * metodo que indica si la maquina esta parada o no
+	 * @return
+	 */
+	public boolean isHalt() {
+		return this.halt;
+	}
+	
+	
 		
 }
 	

@@ -21,7 +21,7 @@ public class OperandStack {
 	 * retorna 
 	 * @return
 	 */
-	public String tooString() {
+	public String toString() {
 		String cadena="Pila: ";
 		if(this.isEmpty()) {
 			cadena+= "<vacia>";

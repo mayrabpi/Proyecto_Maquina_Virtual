@@ -29,9 +29,10 @@ public class Engine {
 		System.out.println("Comienza la ejecución de NEWINST");
 		this.program.setInstruccion(bc);
 	}
-	public void commandReset() {
+	public boolean commandReset() {
 		System.out.println("Comienza la ejecución de RESET");
 		this.program.reset();
+		return true;
 	}
 	public void commandHelp() {
 		System.out.println("Comienza la ejecución de HELP");
@@ -42,6 +43,8 @@ public class Engine {
 		System.out.println("RESET: Vacia el programa actual");
 		System.out.println("REPLACE N: Reemplaza la instrucción N por la solicitada al usuario");
 	}
+	
+	
 	
 	
 
