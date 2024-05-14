@@ -33,45 +33,44 @@ public class CPU {
 	}
 	/**
 	 * lee de la memoria el valor almacenado en pos y lo apila en la pila 
-	 * @param pos
-	 * @return
+	 * @param pos es la posicion del elemento de la memoria
+	 * @return 
 	 */
 	public boolean load(int pos) {
-		boolean exito = false;
 		if(pos>=0) {
 			this.pila.push(this.memoria.read(pos));
-			exito = true;
-		}
-		return exito;
+			return true;
+		}else 
+		return false;
 		
 	}
 	/**
-	 * añade a la memoria 
-	 * @param pos
+	 * añade a la memoria la cima de la pila  
+	 * @param pos de la memoria en la que se quiere añadir
 	 * @return
 	 */
 	public boolean store(int pos) {
-		boolean exito=false;
+		
 		if(this.pila.getCima()>0 && pos >=0) {
 			int cima = pila.pop();
 			this.memoria.write(pos, cima);
-			exito= true;
-		}
-		return exito;
+			return true;
+		}else
+		return false;
 	}
 	/**
 	 * metodo suma la cima y subcima 
 	 * @return
 	 */
-	public boolean add() {
-		boolean exito = false;
+	public boolean sumaPila() {
 		if(this.pila.getCima()>1) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
-			push(subCima + cima);
-			exito = true;
-		}
-		return exito;
+			int resultado=subCima + cima;
+			push(resultado);
+			return true;
+		}else
+		return false;
 	}
 	/**
 	 * escribe el entero almacenado en la cima de la pila
@@ -87,38 +86,49 @@ public class CPU {
 		return exito;
 		
 	}
+	/**
+	 * metodo resta pila
+	 * @return
+	 */
+	public boolean restaPila() {
 	
-	public boolean sub() {
-		boolean exito =false;
 		if(this.pila.getCima()>1) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
-			push(subCima - cima);
-			exito = true;
-		}
-		return exito;
+			int resultado=subCima - cima;
+			push(resultado);
+			return true;
+		}else
+		return false;
 	}
+	/**
+	 * metodo multiplica la pila
+	 * @return
+	 */
+	public boolean multiplicaPila(){
 	
-	public boolean mul(){
-		boolean exito = false;
 		if(this.pila.getCima()>1) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
-			push(cima*subCima);
-			exito = true;
+			int resultado=cima*subCima;
+			push(resultado);
+			return true;
 		}
-		return exito;
+		return false;
 	}
-	
-	public boolean div() {
-		boolean exito = false;
+	/**
+	 * metodo divide pila
+	 * @return
+	 */
+	public boolean dividePila() {
 		if(this.pila.getCima()>1) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
-			push(cima/subCima);
-			exito = true;
-		}
-		return exito;
+			int resultado =cima/subCima;
+			push(resultado);
+			return true;
+		}else
+		return false;
 	}
 	/**
 	 * Metodo encargado de ejecutar la instruccion  que le llega como parametro modificando convenientemente la  memoria y la pila
@@ -126,30 +136,42 @@ public class CPU {
 	 * @return si la ejecucion tiene exito retorna instruccion, si genera un erros devuelve false
 	 */
 	public boolean execute (ByteCode instruccion) {
-		boolean exito =false;
+		boolean resultado = false;
 		switch(instruccion.getBytecode()) {
 		case ADD:
-			exito = add();
-			break;
-		case SUB:
-			exito = sub();
-			break;
+			return this.sumaPila();
 		case MUL:
-			exito = mul();
-			break;
+			return this.multiplicaPila();
 		case DIV:
-			exito = div();
-			break;
+			return this.dividePila();
+		case OUT:
+			return this.out();
+		case HALT:
+			return this.halt;
+		case LOAD:
+			return this.load(instruccion.getParam());
+		case STORE:
+			return this.store(instruccion.getParam());
+		case PUSH:
+			return this.push(instruccion.getParam());
 		default:
-			exito = false;		
+			return false;
+			
+			
+		
 		}
-		return exito;
-	}
+		}
 	/**
 	 * metodo que indica a la cpu que ya queremo salir
 	 */
-	public void run() {
-		this.halt= true;
+	public void runCpu() {
+		this.halt=true;
+		
+	}
+	
+	public void erase() {
+		this.memoria= new Memory();
+		this.pila = new OperandStack();
 	}
 		
 }

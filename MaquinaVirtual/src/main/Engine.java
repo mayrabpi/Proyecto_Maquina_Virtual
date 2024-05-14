@@ -30,16 +30,17 @@ public class Engine {
 		this.program.setInstruccion(bc);
 	}
 	public void commandReset() {
-		System.out.println("Comienza la ejecución de NEWINST");
+		System.out.println("Comienza la ejecución de RESET");
 		this.program.reset();
 	}
 	public void commandHelp() {
 		System.out.println("Comienza la ejecución de HELP");
 		System.out.println("HELP: Muestra esta ayuda");
 		System.out.println("QUIT: Cierra la aplicación");
-		System.out.println("NEWINST");
-		System.out.println("RESET");
-		System.out.println("REPLACE");
+		System.out.println("RUN: Ejecuta el programa");
+		System.out.println("NEWINST BYTECODE: Introduce una nueva ");
+		System.out.println("RESET: Vacia el programa actual");
+		System.out.println("REPLACE N: Reemplaza la instrucción N por la solicitada al usuario");
 	}
 	
 	
