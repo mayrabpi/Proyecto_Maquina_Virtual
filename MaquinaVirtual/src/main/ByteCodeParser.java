@@ -6,9 +6,7 @@ package main;
 public class ByteCodeParser {
 	private int byteCode;
 	
-	public ByteCodeParser() {
-	
-		
+	public ByteCodeParser() {	
 	}
 	
 	/**

@@ -34,6 +34,15 @@ public class Engine {
 		this.program.reset();
 		return true;
 	}
+	public boolean commandReplace(int n) {
+		return true;
+	}
+	public boolean commandRun() {
+		return true;
+	}
+	public boolean commandQuit() {
+		return true;
+	}
 	public void commandHelp() {
 		System.out.println("Comienza la ejecución de HELP");
 		System.out.println("HELP: Muestra esta ayuda");

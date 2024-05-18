@@ -12,6 +12,11 @@ public class ByteCodeProgram {
 		this.num_elem=0;
 		this.size=0;
 	}
+	/**
+	 * Este metodo inserta un byteCode en la siguiente posicion
+	 * @param instruccion
+	 * @return
+	 */
 	public boolean setInstruccion(ByteCode instruccion) {
 		if(this.num_elem<this.program.length) {
 			this.program[this.num_elem]=instruccion;
@@ -30,14 +35,17 @@ public class ByteCodeProgram {
 	
 		return "Programa almacenado";
 	}
+	/**
+	 * Este metodo recorre el array y ejecuta todas las instrucciones 
+	 */
 	public String runProgram(CPU cpu) {
 		String mensaje = "";
 		for(int i=0; i <this.num_elem; i++) {
 			if(!cpu.isHalt()&& cpu.execute(this.program[i])) {
-			System.out.println("El estado de la máquina tras ejecutar el byteco");
+			System.out.println("El estado de la máquina tras ejecutar el bytecod");
 			}
 			else if (!cpu.isHalt()){
-			 //bla bla
+			 
 			 }	
 		}
 		cpu.erase();

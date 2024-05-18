@@ -45,7 +45,7 @@ public class OperandStack {
 	/**
 	 * 
 	 * @param numero se añade
-	 * @return retorna true si se ha podido añadir o fañse en caso contrario
+	 * @return retorna true si se ha podido añadir o false en caso contrario
 	 */
 	public boolean push(int numero) {
 		if(this.num_elem>=this.MAX_STACK)

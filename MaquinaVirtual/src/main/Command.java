@@ -32,7 +32,7 @@ public class Command {
 	 */
 	public boolean excute ( Engine engine) {
 		if(this.comand == ENUM_COMMAND.REPLACE) {
-			engine.commandReset();		
+			engine.commandReplace(this.replace);		
 		}
 		else if (this.comand == ENUM_COMMAND.NEWINST){
 			engine.commandNewIns(this.instruccion);

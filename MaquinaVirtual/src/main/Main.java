@@ -17,7 +17,7 @@ public class Main {
         ByteCode code = new ByteCode(ENUM_BYTECODE.ADD);
         ByteCodeParser code1 = new ByteCodeParser();
         
-       code1.parse("ADD");
+       code1.parse("add");
       
         
         
