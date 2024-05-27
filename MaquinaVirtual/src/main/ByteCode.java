@@ -40,6 +40,7 @@ public class ByteCode {
 	public int getParam() {
 		return this.param;
 	}
+	
 	public String toString() {
 		return this.name.toString().toUpperCase() + this.param;
 	}

@@ -52,7 +52,7 @@ public class Memory {
 	 * @param posicion
 	 */
 	public void resize(int posicion) {
-	
+	if(posicion >= this.size) {
 	Integer[]newMemory =new Integer[posicion*2];
 	for(int i=0; i<this.size;i++) {
 		if(i<this.size)
@@ -61,10 +61,11 @@ public class Memory {
 		else
 			newMemory[i]=null;
 	}
+	
 	this.memory=newMemory;
 	this.size=newMemory.length;
 	}
-	
+	}
 	public String toString() {
 		String cadena="Memoria:";
 		if(this.empty) {

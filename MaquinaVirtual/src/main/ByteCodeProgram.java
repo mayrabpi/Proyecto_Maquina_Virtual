@@ -10,7 +10,7 @@ public class ByteCodeProgram {
 	public ByteCodeProgram() {
 		this.program = new ByteCode[this.size];
 		this.num_elem=0;
-		this.size=0;
+		this.size=1;
 	}
 	
 	public void resize() {
@@ -32,17 +32,16 @@ public class ByteCodeProgram {
 	 * @param instruccion
 	 * @return
 	 */
-	public boolean setInstruccion(ByteCode instruccion) {
+	public void setInstruccion(ByteCode instruccion) {
 		resize();
 		if(this.num_elem<this.program.length) {
 			this.program[this.num_elem]=instruccion;
 			this.num_elem++;
-			return true;
+			
 		}
-		else
-			return false;
 		
 	}
+		
 	/**
 	 * 
 	 * @param bc
@@ -62,13 +61,13 @@ public class ByteCodeProgram {
 	public void reset() {
 		 this.program = new ByteCode[this.size];
 		    this.num_elem = 0;
-		    //this.size=1;
+		    this.size=1;
 	}
 	/**
 	 * 
 	 */
 	public String toString() {
-		 String cadena = "Programa almacenado";
+		 String cadena = " ";
 		for(int i =0; i<this.num_elem;i++) {
 			if(this.program[(i+1)-1].getParam()==-1) {
 				cadena+= i+ ": "+ this.program[(i+1)- 1].getBytecode()+ "\n";
@@ -85,7 +84,11 @@ public class ByteCodeProgram {
 		String mensaje = " ";
 		for(int i=0; i <this.num_elem; i++) {
 			if(!cpu.isHalt()&& cpu.execute(this.program[i])) {
-			mensaje += "\n El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " es:\n\n CPU estado:\n" + cpu.tooString()+"\n";
+				if(this.program[i].getParam()!=-1)
+			         mensaje += "\n El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " es:\n\n CPU estado:\n" + cpu.tooString()+"\n";
+				else 
+					 mensaje += "\n El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " es:\n\nCPU estado: \n" + cpu.tooString()+ "\n";
+					
 			}else if (!cpu.isHalt()) {
 				mensaje += "Fallo: ejecución incorrecta del comando";
 			}

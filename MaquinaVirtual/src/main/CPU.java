@@ -19,30 +19,20 @@ public class CPU {
 		
 	}
 	public String tooString() {
-		return memoria.toString() + " " + pila.toString();
+		return  " Memoria: " + memoria.toString() + "\n " + pila.toString();
 	}
-	/**
-	 * apila en la pila de operandos el entero number
-	 * @param number
-	 * @return
-	 */
-	public boolean push(int number) {
-		this.pila.push(number);
-		return true;
-		
-	}
+	
 	/**
 	 * lee de la memoria el valor almacenado en pos y lo apila en la pila 
 	 * @param pos es la posicion del elemento de la memoria
 	 * @return 
 	 */
 	public boolean load(int pos) {
-		if(pos>=0) {
+		if(this.memoria.read(pos)!=-1) {
 			this.pila.push(this.memoria.read(pos));
 			return true;
-		}else 
-		return false;
-		
+		}else
+			return false;
 	}
 	/**
 	 * añade a la memoria la cima de la pila  
@@ -51,39 +41,38 @@ public class CPU {
 	 */
 	public boolean store(int pos) {
 		
-		if(this.pila.getCima()>0 && pos >=0) {
+		if(this.pila.getCima()!=-1) {
 			int cima = pila.pop();
 			this.memoria.write(pos, cima);
 			return true;
 		}else
-		return false;
+		   return false;
 	}
 	/**
 	 * metodo suma la cima y subcima 
 	 * @return
 	 */
 	public boolean sumaPila() {
-		if(this.pila.getCima()>1) {
+		if(this.pila.getCima()>1 && pila.isEmpty()==false) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
 			int resultado=subCima + cima;
-			push(resultado);
+			this.pila.push(resultado);
 			return true;
 		}else
-		return false;
+		   return false;
 	}
 	/**
 	 * escribe el entero almacenado en la cima de la pila
 	 * @return
 	 */
 	public boolean out() {
-		boolean exito = false;
-		if(this.pila.getCima()> 0) 
-			exito = true;
-			else 
-				exito= false;
-		
-		return exito;
+		if(pila.isEmpty()== false && pila.getNumElem()>0) {
+			return true;
+		}else
+			return false;
+	
+	
 		
 	}
 	/**
@@ -95,10 +84,10 @@ public class CPU {
 			int cima = pila.pop();
 			int subCima = pila.pop();
 			int resultado=subCima - cima;
-			push(resultado);
+		    this.pila.push(resultado);
 			return true;
 		}else
-		return false;
+		 return false;
 	}
 	/**
 	 * metodo multiplica la pila
@@ -109,9 +98,9 @@ public class CPU {
 			int cima = pila.pop();
 			int subCima=pila.pop();
 			int resultado=cima*subCima;
-			push(resultado);
+			this.pila.push(resultado);
 			return true;
-		}
+		}else
 		return false;
 	}
 	/**
@@ -123,7 +112,7 @@ public class CPU {
 			int cima = pila.pop();
 			int subCima=pila.pop();
 			int resultado =cima/subCima;
-			push(resultado);
+			this.pila.push(resultado);
 			return true;
 		}else
 		return false;
@@ -158,7 +147,7 @@ public class CPU {
 			return store(instruccion.getParam());
 			
 		case PUSH:
-			return push(instruccion.getParam());
+			return this.pila.push(instruccion.getParam());
 		default:
 			return false;	
 		}
@@ -184,6 +173,13 @@ public class CPU {
 	 */
 	public boolean isHalt() {
 		return this.halt;
+	}
+	
+	public boolean stopCpu() {
+		return this.halt=true;
+	}
+	public boolean runCpu() {
+		return this.halt = false;
 	}
 	
 	

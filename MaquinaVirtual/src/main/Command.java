@@ -32,23 +32,33 @@ public class Command {
 	 */
 	public boolean excute ( Engine engine) {
 		if(this.comand == ENUM_COMMAND.REPLACE) {
-			engine.commandReplace(this.replace);		
+			engine.commandReplace(this.replace);
+			return true;
 		}
 		else if (this.comand == ENUM_COMMAND.NEWINST){
 			engine.commandNewIns(this.instruccion);
+			return true;
 		}
 		else if (this.comand == ENUM_COMMAND.HELP) {
 			engine.commandHelp();
+			return true;
 		}
 		else if (this.comand == ENUM_COMMAND.RUN) {
+			engine.commandRun();
+			return true;
 			
 		}
 		else if (this.comand == ENUM_COMMAND.QUIT) {
+			engine.commandQuit();
+			return true;
 			
-		}else 
+		}
+		else if ( this.comand== ENUM_COMMAND.RESET) {
+			engine.commandReset();
+			return true;
+		}else
 			return false;
 		
-		return true;		
 	}
 
 			

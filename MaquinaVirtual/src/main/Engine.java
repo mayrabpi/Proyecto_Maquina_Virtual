@@ -20,31 +20,48 @@ public class Engine {
 	 * hasta recibir el comando QUIT
 	 */
 	public void start() {
-		//Command co = new Command();
-		while(!this.end) {
+		String entrada1;
+		while(!this.end){
+			entrada1= this.entrada.nextLine();
+			Command comand= CommandParser.parse(entrada1);
+			
+			if(comand !=null) {
+				System.out.println("Comienza la ejecución de "+ entrada1.toUpperCase()+ "\n");
+				if(!comand.excute(this)) {
+					System.out.println("Error: Ejecución incorrecta del comando");
+				}
+			}else {
+				System.out.println("Error: comando incorrecto");
+			}
+			//System.out.println("ADIOS");
 			
 		}
 	}
 	public void commandNewIns(ByteCode bc) {
-		System.out.println("Comienza la ejecución de NEWINST");
+		//System.out.println("Comienza la ejecución de NEWINST");
 		this.program.setInstruccion(bc);
+		System.out.println("Programa almacenado: \n"+ this.program.toString());
 	}
 	public boolean commandReset() {
-		System.out.println("Comienza la ejecución de RESET");
+		System.out.println("Reset completado");
 		this.program.reset();
 		return true;
 	}
-	public boolean commandReplace(int n) {
-		return true;
+	public void commandReplace(int n) {
+		System.out.println("Nueva instrucción: ");
+		String entrada2 = this.entrada.nextLine().toUpperCase();
+		ByteCode bc= ByteCodeParser.parse(entrada2);
+		this.program.setInstruccionPosicion(bc, n);
+		
 	}
-	public boolean commandRun() {
-		return true;
+	public void commandRun() {
+		System.out.println(this.program.runProgram(n));
 	}
 	public boolean commandQuit() {
-		return true;
+		return this.end= true;
 	}
 	public void commandHelp() {
-		System.out.println("Comienza la ejecución de HELP");
+		//System.out.println("Comienza la ejecución de HELP");
 		System.out.println("HELP: Muestra esta ayuda");
 		System.out.println("QUIT: Cierra la aplicación");
 		System.out.println("RUN: Ejecuta el programa");
