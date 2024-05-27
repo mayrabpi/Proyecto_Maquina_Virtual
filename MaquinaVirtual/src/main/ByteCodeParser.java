@@ -17,7 +17,7 @@ public class ByteCodeParser {
 	public static ByteCode parse(String s) {
 		ENUM_BYTECODE code = null;
 		ByteCode ins =null;
-		String aux[]=s.split("");
+		String[] aux=s.split("");
 		int longitudArray = aux.length;
 		
 		switch (longitudArray) {

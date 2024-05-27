@@ -8,9 +8,24 @@ public class ByteCodeProgram {
 	private int num_elem;
 	private int size;
 	public ByteCodeProgram() {
-		this.program = new ByteCode[this.num_elem];
+		this.program = new ByteCode[this.size];
 		this.num_elem=0;
 		this.size=0;
+	}
+	
+	public void resize() {
+		if(this.num_elem ==this.size) {
+			ByteCode newProgram[] = new ByteCode[this.size*2];
+			for (int i=0; i<this.size; i++) {
+				if(i<this.size)
+					newProgram[i]=this.program[i];
+				
+				else
+					newProgram[i]=null;
+			}
+			this.program= newProgram;
+			this.size= newProgram.length;
+		}
 	}
 	/**
 	 * Este metodo inserta un byteCode en la siguiente posicion
@@ -18,6 +33,7 @@ public class ByteCodeProgram {
 	 * @return
 	 */
 	public boolean setInstruccion(ByteCode instruccion) {
+		resize();
 		if(this.num_elem<this.program.length) {
 			this.program[this.num_elem]=instruccion;
 			this.num_elem++;
@@ -27,30 +43,58 @@ public class ByteCodeProgram {
 			return false;
 		
 	}
+	/**
+	 * 
+	 * @param bc
+	 * @param pos
+	 * @return
+	 */
+	public boolean setInstruccionPosicion(ByteCode bc, int pos) {
+		if(pos>=0 && pos < this.size) {
+			this.program[pos]= bc;
+			return true;
+		}else
+			return false;
+	}
+	/**
+	 * 
+	 */
 	public void reset() {
 		 this.program = new ByteCode[this.size];
 		    this.num_elem = 0;
+		    //this.size=1;
 	}
+	/**
+	 * 
+	 */
 	public String toString() {
-	
-		return "Programa almacenado";
+		 String cadena = "Programa almacenado";
+		for(int i =0; i<this.num_elem;i++) {
+			if(this.program[(i+1)-1].getParam()==-1) {
+				cadena+= i+ ": "+ this.program[(i+1)- 1].getBytecode()+ "\n";
+			}else {
+				cadena+= i +": " + this.program[i].getBytecode()+ " "+ this.program[i].getParam()+ "\n";
+			}
+		}
+		return cadena;
 	}
 	/**
 	 * Este metodo recorre el array y ejecuta todas las instrucciones 
 	 */
 	public String runProgram(CPU cpu) {
-		String mensaje = "";
+		String mensaje = " ";
 		for(int i=0; i <this.num_elem; i++) {
 			if(!cpu.isHalt()&& cpu.execute(this.program[i])) {
-			System.out.println("El estado de la máquina tras ejecutar el bytecod");
+			mensaje += "\n El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " es:\n\n CPU estado:\n" + cpu.tooString()+"\n";
+			}else if (!cpu.isHalt()) {
+				mensaje += "Fallo: ejecución incorrecta del comando";
 			}
-			else if (!cpu.isHalt()){
-			 
-			 }	
+			
 		}
 		cpu.erase();
-		 cpu.runCPU();
-		 return mensaje;   
+	    cpu.runCPU();
+	    return mensaje;
+		  
 	}
 	//num_elem
 	//size

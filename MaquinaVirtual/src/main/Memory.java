@@ -48,16 +48,21 @@ public class Memory {
 	}
 	
 	/**
-	 * multiplica el tamaño del array por 2 , crea un nuevo array con el doble del tamaño del array
+	 * 	  multiplica el tamaño del array por 2 , crea un nuevo array con el doble del tamaño del array
+	 * @param posicion
 	 */
 	public void resize(int posicion) {
-	int newSize= posicion*2;
-	Integer[]newMemory =new Integer[newSize];
+	
+	Integer[]newMemory =new Integer[posicion*2];
 	for(int i=0; i<this.size;i++) {
+		if(i<this.size)
 		newMemory[i]=this.memory[i];
+		
+		else
+			newMemory[i]=null;
 	}
 	this.memory=newMemory;
-	this.size=newSize;
+	this.size=newMemory.length;
 	}
 	
 	public String toString() {
@@ -71,16 +76,9 @@ public class Memory {
 			}
 		}
 		return cadena;
-		
 	
-	
-
+	}
+	public void erase() {
+		this.memory= new Integer[this.size];
 	}
 }
-/*
- * if(posicion>=this.size) {
-			this.empty=false;
-			Integer[] newMemory = new Integer [posicion*2];
-			newMemory =this.memory;
-			this.memory=newMemory;
-		}*/

@@ -36,7 +36,7 @@ public class OperandStack {
 	 * @return false o true 
 	 */
 	public boolean isEmpty() {
-		if(this.MAX_STACK>0)
+		if(this.num_elem>0)
 			return false;
 		else
 			return true;		
@@ -48,12 +48,12 @@ public class OperandStack {
 	 * @return retorna true si se ha podido añadir o false en caso contrario
 	 */
 	public boolean push(int numero) {
-		if(this.num_elem>=this.MAX_STACK)
+		if(this.num_elem<this.MAX_STACK) {
+			this.stack[this.num_elem]=numero;
+			this.num_elem++;
+			return true;
+		}else
 			return false;
-		
-		this.stack[this.num_elem] = numero;
-		this.num_elem++;
-		return true;
 		
 	}
 	
@@ -74,8 +74,19 @@ public class OperandStack {
 	 * @return devuelve el numero almacenado en la cima de la pila 
 	 */
 	public int getCima() {
-			
+		if(isEmpty()==false)	
        return this.stack[this.num_elem-1];
+		
+		else
+			return -1;
+	}
+	
+	public void erase() {
+		this.stack = new int[this.MAX_STACK];
+		this.num_elem=0;
+	}
+	public int getNumElem() {
+		return this.num_elem;
 	}
 
 }
