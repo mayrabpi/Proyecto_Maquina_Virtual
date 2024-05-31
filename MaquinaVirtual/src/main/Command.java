@@ -31,34 +31,31 @@ public class Command {
 	 * @return
 	 */
 	public boolean excute ( Engine engine) {
-		if(this.comand == ENUM_COMMAND.REPLACE) {
-			engine.commandReplace(this.replace);
-			return true;
-		}
-		else if (this.comand == ENUM_COMMAND.NEWINST){
-			engine.commandNewIns(this.instruccion);
-			return true;
-		}
-		else if (this.comand == ENUM_COMMAND.HELP) {
-			engine.commandHelp();
-			return true;
-		}
-		else if (this.comand == ENUM_COMMAND.RUN) {
-			engine.commandRun();
-			return true;
-			
-		}
-		else if (this.comand == ENUM_COMMAND.QUIT) {
-			engine.commandQuit();
-			return true;
-			
-		}
-		else if ( this.comand== ENUM_COMMAND.RESET) {
-			engine.commandReset();
-			return true;
-		}else
+		switch(this.comand) {
+		case HELP:
+			return engine.commandHelp();
+		case QUIT:
+			return engine.commandQuit();
+		case RUN:
+			return engine.commandRun();
+		case NEWINST:
+			return engine.commandNewIns(this.instruccion);
+		case RESET:
+			return engine.commandReset();
+		case REPLACE:
+			return engine.commandReplace(this.replace);
+		default:
 			return false;
-		
+		}
+	}
+	public ENUM_COMMAND getCommand() {
+		return this.comand;
+	}
+	//public  ByteCode getBytecode() {
+		//return this.getBytecode();
+	//}
+	public int replace() {
+		return this.replace;
 	}
 
 			

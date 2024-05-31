@@ -15,7 +15,7 @@ public class ByteCodeParser {
 	 * @return el byteCode almacenado en s o bien null si s no representa ningun comando
 	 */
 	public static ByteCode parse(String s) {
-		String[] aux = s.split("");
+		String[] aux = s.split(" ");
 		
 		switch ( aux.length) {
 		case 1:

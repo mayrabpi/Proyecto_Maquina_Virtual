@@ -6,7 +6,7 @@ package main;
  */
 public class Memory {
 	private Integer memory[];//alamacena los valores 
-	private final int MAX_MEMORY = 100;
+	private final int MAX_MEMORY;
 	private int size;
 	private boolean empty;
 	
@@ -14,7 +14,8 @@ public class Memory {
 	 * constructor
 	 */
 	public Memory() {
-		this.size=0;
+		this.size=10;
+		this.MAX_MEMORY=10;
 		this.memory = new Integer [this.MAX_MEMORY];
 		this.empty=true;
 	}
@@ -26,13 +27,15 @@ public class Memory {
 	 * @return
 	 * llamar resize 
 	 */
-	public void write(int pos, int value) {
-		if(pos>=this.size)
+	public boolean write(int pos, int value) {
+		if(pos>=0) {
+			this.empty =false;
 			this.resize(pos);
-		
 		    this.memory[pos]=value;
-		    empty =false;
-		
+		    
+		    return true;
+		}else 
+			return false;
 	}
 	
 	/**
@@ -40,8 +43,8 @@ public class Memory {
 	 * @param recibe la posicion pos
 	 * @return el valor que haya en la posicion pos, si en pos hay null se devuelve -1
 	 */
-	public int read(int pos) {
-		if(this.memory[pos]==null) {
+	public int read(Integer pos) {
+		if(this.memory[pos]==null ) {
 			return -1;
 		}else
 		    return this.memory[pos];
@@ -53,13 +56,11 @@ public class Memory {
 	 */
 	public void resize(int posicion) {
 	if(posicion >= this.size) {
-	Integer[]newMemory =new Integer[posicion*2];
-	for(int i=0; i<this.size;i++) {
-		if(i<this.size)
-		newMemory[i]=this.memory[i];
-		
-		else
-			newMemory[i]=null;
+		//this.empty=false;
+	    Integer[]newMemory =new Integer[posicion*2];
+	    for(int i=0; i<this.memory.length;i++) {
+
+		    newMemory[i]=this.memory[i];		    
 	}
 	
 	this.memory=newMemory;
@@ -73,13 +74,11 @@ public class Memory {
 		}else {
 			for(int i =0;i<this.size;i++) {
 				if(this.memory[i]!=null)
-					cadena+= "[" +i+ "]:[" + this.memory[i]+ "]" + ",";
+					cadena+= "[" +i+ "] :  " + this.memory[i]+  "  ";
 			}
 		}
 		return cadena;
 	
 	}
-	public void erase() {
-		this.memory= new Integer[this.size];
-	}
+
 }

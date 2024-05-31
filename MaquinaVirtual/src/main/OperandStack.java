@@ -6,7 +6,7 @@ package main;
  */
 public class OperandStack {
 	private int [] stack;// donde se almacenan los operandos 
-	private final int MAX_STACK=200;//tamaño maximo de la pila 
+	private final int MAX_STACK=100;//tamaño maximo de la pila 
 	private int num_elem;
 	
 	/**
@@ -75,18 +75,16 @@ public class OperandStack {
 	 */
 	public int getCima() {
 		if(isEmpty()==false)	
-           return this.stack[this.num_elem-1];
+           return this.stack[this.num_elem];
 		
 		else
 			return -1;
 	}
 	
-	public void erase() {
-		this.stack = new int[this.MAX_STACK];
-		this.num_elem=0;
-	}
+	
 	public int getNumElem() {
 		return this.num_elem;
 	}
 
 }
+

@@ -6,13 +6,13 @@ import java.util.Scanner;
 public class Engine {
 	private ByteCodeProgram program;//representa el programa actual
 	private boolean end;//representa la terminacion de la aplicacion
-	private CPU n;
+	private CPU cpu;
 	private Scanner entrada;
 	
 	public Engine(){
 		this.program= new ByteCodeProgram();
 		this.end= false;
-		this.n = new CPU();
+		this.cpu = new CPU();
 		this.entrada = new Scanner(System.in);
 	}
 	/**
@@ -26,48 +26,59 @@ public class Engine {
 			Command comand= CommandParser.parse(entrada1);
 			
 			if(comand !=null) {
-				System.out.println("Comienza la ejecución de "+ entrada1.toUpperCase()+ "\n");
+				System.out.println(" Comienza la ejecución de "+ entrada1.toUpperCase());
 				if(!comand.excute(this)) {
-					System.out.println("Error: Ejecución incorrecta del comando");
+					System.out.println(" Error: Ejecución incorrecta del comando");
 				}
 			}else {
-				System.out.println("Error: comando incorrecto");
+				System.out.println(" Error: comando incorrecto");
 			}
-			//System.out.println("ADIOS");
+
 			
 		}
 	}
-	public void commandNewIns(ByteCode bc) {
-		//System.out.println("Comienza la ejecución de NEWINST");
-		this.program.setInstruccion(bc);
-		System.out.println("Programa almacenado: \n"+ this.program.toString());
-	}
-	public boolean commandReset() {
-		System.out.println("Reset completado");
-		this.program.reset();
-		return true;
-	}
-	public void commandReplace(int n) {
-		System.out.println("Nueva instrucción: ");
-		String entrada2 = this.entrada.nextLine().toUpperCase();
-		ByteCode bc= ByteCodeParser.parse(entrada2);
-		this.program.setInstruccionPosicion(bc, n);
+	public boolean commandNewIns(ByteCode bc) {
+			this.program.setInstruccion(bc);
+			System.out.println(this.program.toString());
+			return true;
 		
 	}
-	public void commandRun() {
-		System.out.println(this.program.runProgram(n));
+	public boolean commandReset() {
+		this.program.reset();
+		System.out.println(this.program.toString());
+		return true;
+	}
+	public boolean commandReplace(int n) {
+		System.out.println(" Nueva instrucción: ");
+		String entrada1 = this.entrada.nextLine().toUpperCase();
+		ByteCode bc= ByteCodeParser.parse(entrada1);
+		this.program.setInstruccionPosicion(bc, n);
+		System.out.println(this.program.toString());
+		return true;
+	}
+	
+	public boolean commandRun() {
+		System.out.println(this.program.runProgram(this.cpu));
+		System.out.println(this.program.toString());
+		
+		return true;
 	}
 	public boolean commandQuit() {
+		System.out.println(this.program.toString());
+		System.out.println(" Fin de la ejecución....");
+		
 		return this.end= true;
 	}
-	public void commandHelp() {
+	
+	public boolean commandHelp() {
 		//System.out.println("Comienza la ejecución de HELP");
 		System.out.println("HELP: Muestra esta ayuda");
 		System.out.println("QUIT: Cierra la aplicación");
 		System.out.println("RUN: Ejecuta el programa");
-		System.out.println("NEWINST BYTECODE: Introduce una nueva ");
+		System.out.println("NEWINST BYTECODE: Introduce una nueva instrucción al progrma");
 		System.out.println("RESET: Vacia el programa actual");
 		System.out.println("REPLACE N: Reemplaza la instrucción N por la solicitada al usuario");
+		return true;
 	}
 	
 	

@@ -4,7 +4,7 @@ package main;
  * Es la unidad de precesamiento de la maquina virtual, contiene una memoria y una pila de operandos 
  * 
  */
-public class CPU {
+public class CPU  {
 	private OperandStack pila;
 	private Memory memoria;
 	private boolean halt; //determina cuando termina la ejecucion 
@@ -18,8 +18,9 @@ public class CPU {
 		this.halt = false;
 		
 	}
-	public String tooString() {
-		return  " Memoria: " + memoria.toString() + "\n " + pila.toString();
+	public String toString() {
+		 
+		return ("Estado de la CPU: " + "\n "+ this.memoria.toString() + "\n " + this.pila.toString());
 	}
 	
 	/**
@@ -53,7 +54,7 @@ public class CPU {
 	 * @return
 	 */
 	public boolean sumaPila() {
-		if(this.pila.getCima()>1 && pila.isEmpty()==false) {
+		if( this.pila.getNumElem()>1) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
 			int resultado=subCima + cima;
@@ -67,11 +68,11 @@ public class CPU {
 	 * @return
 	 */
 	public boolean out() {
-		if(pila.isEmpty()== false && pila.getNumElem()>0) {
+		if(!this.pila.isEmpty()&& this.pila.getNumElem()>0) {
+			System.out.println("El elemento de la cima de la pila es: " + this.pila.getCima());
 			return true;
 		}else
 			return false;
-	
 	
 		
 	}
@@ -80,7 +81,7 @@ public class CPU {
 	 * @return
 	 */
 	public boolean restaPila() {
-		if(this.pila.getCima()>1) {
+		if(this.pila.getNumElem()>1 ) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
 			int resultado=subCima - cima;
@@ -94,7 +95,7 @@ public class CPU {
 	 * @return
 	 */
 	public boolean multiplicaPila(){
-		if(this.pila.getCima()>1) {
+		if(this.pila.getNumElem()>1 ) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
 			int resultado=cima*subCima;
@@ -108,7 +109,7 @@ public class CPU {
 	 * @return
 	 */
 	public boolean dividePila() {
-		if(this.pila.getCima()>1) {
+		if(this.pila.getNumElem()>1) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
 			int resultado =cima/subCima;
@@ -127,6 +128,9 @@ public class CPU {
 		switch(instruccion.getBytecode()) {
 		case ADD:
 			return sumaPila();
+			
+		case SUB:
+			return restaPila();
 		
 		case MUL:
 			return multiplicaPila();
@@ -147,18 +151,20 @@ public class CPU {
 			return store(instruccion.getParam());
 			
 		case PUSH:
-			return this.pila.push(instruccion.getParam());
+			return push(instruccion.getParam());
 		default:
 			return false;	
 		}
 		
 		}
-	/**
-	 * 
-	 */
-	public void runCPU() {
-	   this.halt= false;		
+	
+	public boolean push(int n) {
+		this.pila.push(n);
+		return true;
 	}
+
+	
+	
 	/**
 	 * este metodo vacia la memoria y la pila 
 	 */

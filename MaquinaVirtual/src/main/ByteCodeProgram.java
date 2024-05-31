@@ -4,42 +4,50 @@ package main;
  */
 public class ByteCodeProgram {
 	private ByteCode[] program; 
-	private CPU cpu =new CPU();
 	private int num_elem;
 	private int size;
+	
 	public ByteCodeProgram() {
 		this.program = new ByteCode[this.size];
 		this.num_elem=0;
-		this.size=1;
+		this.size=10;
 	}
 	
 	public void resize() {
-		if(this.num_elem ==this.size) {
 			ByteCode newProgram[] = new ByteCode[this.size*2];
-			for (int i=0; i<this.size; i++) {
-				if(i<this.size)
+			for (int i=0; i<this.program.length; i++) {
 					newProgram[i]=this.program[i];
-				
-				else
-					newProgram[i]=null;
+					
 			}
 			this.program= newProgram;
-			this.size= newProgram.length;
-		}
+			
+		
 	}
 	/**
 	 * Este metodo inserta un byteCode en la siguiente posicion
 	 * @param instruccion
 	 * @return
 	 */
-	public void setInstruccion(ByteCode instruccion) {
+	public boolean setInstruccion(ByteCode instruccion) {
+		//System.out.println(this.program.length);
 		resize();
-		if(this.num_elem<this.program.length) {
-			this.program[this.num_elem]=instruccion;
-			this.num_elem++;
+		if (this.num_elem<this.size) {
 			
-		}
-		
+			this.program[this.num_elem]= instruccion;
+			this.num_elem++;
+			return true;
+		}else 
+			return false;
+	}
+	/**
+	 * 
+	 */
+	public String toString() {
+		 String cadena = " Programa almacenado: \n ";
+		 for(int i =0; i<this.num_elem; i++) {	
+		  cadena +=i +  ": "+ this.program[i].getBytecode()+" "+ this.program[i].getParam()+ "\n ";
+	}
+		return cadena;
 	}
 		
 	/**
@@ -49,7 +57,9 @@ public class ByteCodeProgram {
 	 * @return
 	 */
 	public boolean setInstruccionPosicion(ByteCode bc, int pos) {
+		
 		if(pos>=0 && pos < this.size) {
+		
 			this.program[pos]= bc;
 			return true;
 		}else
@@ -60,45 +70,31 @@ public class ByteCodeProgram {
 	 */
 	public void reset() {
 		 this.program = new ByteCode[this.size];
-		    this.num_elem = 0;
-		    this.size=1;
+		 this.num_elem = 0;
+		  
 	}
-	/**
-	 * 
-	 */
-	public String toString() {
-		 String cadena = " ";
-		for(int i =0; i<this.num_elem;i++) {
-			if(this.program[(i+1)-1].getParam()==-1) {
-				cadena+= i+ ": "+ this.program[(i+1)- 1].getBytecode()+ "\n";
-			}else {
-				cadena+= i +": " + this.program[i].getBytecode()+ " "+ this.program[i].getParam()+ "\n";
-			}
-		}
-		return cadena;
-	}
+	
 	/**
 	 * Este metodo recorre el array y ejecuta todas las instrucciones 
 	 */
 	public String runProgram(CPU cpu) {
-		String mensaje = " ";
+		String mensaje = "";
 		for(int i=0; i <this.num_elem; i++) {
 			if(!cpu.isHalt()&& cpu.execute(this.program[i])) {
-				if(this.program[i].getParam()!=-1)
-			         mensaje += "\n El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " es:\n\n CPU estado:\n" + cpu.tooString()+"\n";
-				else 
-					 mensaje += "\n El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " es:\n\nCPU estado: \n" + cpu.tooString()+ "\n";
-					
+		
+			         mensaje+=" El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " \n " + cpu.toString()+" \n " ;
+			         
 			}else if (!cpu.isHalt()) {
-				mensaje += "Fallo: ejecución incorrecta del comando";
+				mensaje += "Error: ejecución incorrecta del comando";
 			}
 			
 		}
 		cpu.erase();
-	    cpu.runCPU();
+	    cpu.runCpu();
 	    return mensaje;
 		  
 	}
+	
 	//num_elem
 	//size
 	//metodo runProgram recorre el array los hasta num_elems -1 devuelve un string this.program[i].tooString(); concatena un string gigante recibe la cpu
@@ -106,5 +102,6 @@ public class ByteCodeProgram {
 	//programa almacenado es  metodo el tooString de esta clase this.program[i].toString();
 	//metodo reset  elmina los elementos del array, this.program=new array;
 	//tiene un metodo setInstruccion() añada bc al array 
+	//metodo tostring "programa almacenado
 
 }
