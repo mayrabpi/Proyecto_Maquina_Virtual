@@ -7,18 +7,29 @@ public class Command {
 	private ByteCode instruccion;//toma valor haciendo referencia a NEWINST
 	private int replace;//toma valor haciendo haciendo referencia a REPLACE
 	/**
-	 * costructor por defecto
+	 * costructor 1
 	 */
 	public Command(ENUM_COMMAND comando) {
 		this.comand = comando;
 		
 	}
 	
+	/**
+	 * contructora 2 
+	 * @param comando comando HELP, QUIT, NEWINST, RUN, RESET, 
+	 * @param instruccion bytecode  PUSH, LOAD, STORE, ADD, SUB, MUL, OUT, HALT
+	 */
 	public Command (ENUM_COMMAND comando, ByteCode instruccion) {
 		this.comand=comando;
 		this.instruccion=instruccion;
 		
 	}
+	
+	/**
+	 * contructora 3
+	 * @param comando comando
+	 * @param replace hace referencia al comando REPLECE
+	 */
 	public Command (ENUM_COMMAND comando, int replace) {
 		this.comand=comando;
 		this.replace=replace;
@@ -28,7 +39,7 @@ public class Command {
 	 * metodo encargado de ejecutar el comando, dando la orden correspondiente a engine
 	 * si el comando es incorrecto el metodo devuelve false , en otro caso devuelve true
 	 * @param engine
-	 * @return
+	 * @return el comando , si el comando no es correcto retorna false
 	 */
 	public boolean excute ( Engine engine) {
 		switch(this.comand) {
@@ -51,12 +62,7 @@ public class Command {
 	public ENUM_COMMAND getCommand() {
 		return this.comand;
 	}
-	//public  ByteCode getBytecode() {
-		//return this.getBytecode();
-	//}
-	public int replace() {
-		return this.replace;
-	}
+	
 
 			
 		

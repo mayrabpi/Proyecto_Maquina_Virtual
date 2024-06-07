@@ -1,18 +1,21 @@
 package main;
 
+/**
+ * 
+ */
 public enum ENUM_COMMAND {
 	HELP, QUIT, NEWINST(1), RUN, RESET, REPLACE(1);
 	private int valueArg;
 	
 	/**
-	 * Constructora
+	 * Constructora 1
 	 */
 	ENUM_COMMAND(){
 		this.valueArg=0;
 	}
 	
 	/**
-	 * Constructora
+	 * Constructora 2 
 	 * @param n
 	 */
 	ENUM_COMMAND(int n){

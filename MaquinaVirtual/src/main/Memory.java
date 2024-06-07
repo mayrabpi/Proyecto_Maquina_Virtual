@@ -15,7 +15,7 @@ public class Memory {
 	 */
 	public Memory() {
 		this.size=10;
-		this.MAX_MEMORY=10;
+		this.MAX_MEMORY=100;
 		this.memory = new Integer [this.MAX_MEMORY];
 		this.empty=true;
 	}
@@ -67,6 +67,10 @@ public class Memory {
 	this.size=newMemory.length;
 	}
 	}
+	
+	/**
+	 * metodo que se encarga de imprimir si hay elementos en la memoria o vacia si no hay
+	 */
 	public String toString() {
 		String cadena="Memoria:";
 		if(this.empty) {

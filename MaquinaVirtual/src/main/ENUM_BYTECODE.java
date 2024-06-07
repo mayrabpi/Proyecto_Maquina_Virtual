@@ -1,5 +1,8 @@
 package main;
 
+/**
+ * 
+ */
 public enum ENUM_BYTECODE {
 	PUSH(1), LOAD(1), STORE(1), ADD, SUB, MUL, DIV, OUT, HALT;
 	private int valuearg;
@@ -20,7 +23,7 @@ public enum ENUM_BYTECODE {
 	
 	/**
 	 * Devuelve el numero de parametros que tiene una instruccion
-	 * @return
+	 * @return this.valuearg
 	 */
 	public int getValuearg() {
 		return this.valuearg;

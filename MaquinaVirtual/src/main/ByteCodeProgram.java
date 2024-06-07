@@ -6,13 +6,18 @@ public class ByteCodeProgram {
 	private ByteCode[] program; 
 	private int num_elem;
 	private int size;
-	
+	/**
+	 * constructora
+	 */
 	public ByteCodeProgram() {
 		this.program = new ByteCode[this.size];
 		this.num_elem=0;
-		this.size=10;
+		this.size=4;
 	}
 	
+	/**
+	 * metodo que aumenta el tamaño del programa program[]
+	 */
 	public void resize() {
 			ByteCode newProgram[] = new ByteCode[this.size*2];
 			for (int i=0; i<this.program.length; i++) {
@@ -20,6 +25,7 @@ public class ByteCodeProgram {
 					
 			}
 			this.program= newProgram;
+			this.size = newProgram.length;
 			
 		
 	}
@@ -39,8 +45,10 @@ public class ByteCodeProgram {
 		}else 
 			return false;
 	}
+	
 	/**
-	 * 
+	 * metodo que devuelve el programa almacenado 
+	 * @return cadena con el programa almacenado 
 	 */
 	public String toString() {
 		 String cadena = " Programa almacenado: \n ";
@@ -51,13 +59,13 @@ public class ByteCodeProgram {
 	}
 		
 	/**
-	 * 
-	 * @param bc
+	 * añade al programa nuevas instrucciones de tipo bytecode en una posicion especifica para los bytecode push, load, store
+	 * @param bc byteccode que se añade al programa 
 	 * @param pos
-	 * @return
+	 * @return true si se a podido añadir o false si no se ha podido 
 	 */
-	public boolean setInstruccionPosicion(ByteCode bc, int pos) {
-		
+	public boolean setInstruccionPosicion(ByteCode bc, int pos) {	
+		resize();
 		if(pos>=0 && pos < this.size) {
 		
 			this.program[pos]= bc;
@@ -66,7 +74,7 @@ public class ByteCodeProgram {
 			return false;
 	}
 	/**
-	 * 
+	 * metodo que resetea el programa 
 	 */
 	public void reset() {
 		 this.program = new ByteCode[this.size];
@@ -74,15 +82,17 @@ public class ByteCodeProgram {
 		  
 	}
 	
+	
 	/**
-	 * Este metodo recorre el array y ejecuta todas las instrucciones 
+	 * metodo que ejecuta los bytecodes 
+	 * @param cpu objeto de la clase cpu sirve para ejecutar el programa y saber el estado de la maquina
+	 * @return devuelve la cadena de string especificando todo el proceso de ejecucion del programa
 	 */
 	public String runProgram(CPU cpu) {
 		String mensaje = "";
 		for(int i=0; i <this.num_elem; i++) {
 			if(!cpu.isHalt()&& cpu.execute(this.program[i])) {
-		
-			         mensaje+=" El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " \n " + cpu.toString()+" \n " ;
+			         mensaje+=" El estado de la máquina tras ejecutar "+ this.program[i].getBytecode()+ " " + this.program[i].getParam()+ " es: "+" \n " + cpu.toString()+" \n " ;
 			         
 			}else if (!cpu.isHalt()) {
 				mensaje += "Error: ejecución incorrecta del comando";

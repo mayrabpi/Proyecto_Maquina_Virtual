@@ -18,9 +18,13 @@ public class CPU  {
 		this.halt = false;
 		
 	}
+	
+	/**
+	 * @return el estado de la cpu, el estadado de la memoria y la pila
+	 */
 	public String toString() {
 		 
-		return ("Estado de la CPU: " + "\n "+ this.memoria.toString() + "\n " + this.pila.toString());
+		return "Estado de la CPU: " + "\n "+ this.memoria.toString() + "\n " + this.pila.toString();
 	}
 	
 	/**
@@ -41,7 +45,6 @@ public class CPU  {
 	 * @return
 	 */
 	public boolean store(int pos) {
-		
 		if(this.pila.getCima()!=-1) {
 			int cima = pila.pop();
 			this.memoria.write(pos, cima);
@@ -51,10 +54,10 @@ public class CPU  {
 	}
 	/**
 	 * metodo suma la cima y subcima 
-	 * @return
+	 * @return true si se puede hacer la operacion , o false si no se puede 
 	 */
 	public boolean sumaPila() {
-		if( this.pila.getNumElem()>1) {
+		if( this.pila.isEmpty()==false) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
 			int resultado=subCima + cima;
@@ -65,10 +68,10 @@ public class CPU  {
 	}
 	/**
 	 * escribe el entero almacenado en la cima de la pila
-	 * @return
+	 * @return true si la pila esta llena retorna la cima. o false si no hay elementos en la pila
 	 */
 	public boolean out() {
-		if(!this.pila.isEmpty()&& this.pila.getNumElem()>0) {
+		if(this.pila.isEmpty()== false) {
 			System.out.println("El elemento de la cima de la pila es: " + this.pila.getCima());
 			return true;
 		}else
@@ -78,10 +81,10 @@ public class CPU  {
 	}
 	/**
 	 * metodo resta pila
-	 * @return
+	 * @return true si se puede hacer la operacion , o false si no se puede 
 	 */
 	public boolean restaPila() {
-		if(this.pila.getNumElem()>1 ) {
+		if(this.pila.isEmpty()==false ) {
 			int cima = pila.pop();
 			int subCima = pila.pop();
 			int resultado=subCima - cima;
@@ -92,10 +95,10 @@ public class CPU  {
 	}
 	/**
 	 * metodo multiplica la pila
-	 * @return
+	 * @return true si se puede hacer la operacion , o false si no se puede 
 	 */
 	public boolean multiplicaPila(){
-		if(this.pila.getNumElem()>1 ) {
+		if(this.pila.isEmpty()==false ) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
 			int resultado=cima*subCima;
@@ -106,12 +109,15 @@ public class CPU  {
 	}
 	/**
 	 * metodo divide pila
-	 * @return
+	 * @return true si se puede hacer la operacion , o false si no se puede 
 	 */
 	public boolean dividePila() {
-		if(this.pila.getNumElem()>1) {
+		if(this.pila.isEmpty()==false) {
 			int cima = pila.pop();
 			int subCima=pila.pop();
+			if(cima==0|| subCima==0) {
+				return false;
+			}
 			int resultado =cima/subCima;
 			this.pila.push(resultado);
 			return true;
@@ -158,6 +164,11 @@ public class CPU  {
 		
 		}
 	
+	/**
+	 * añade un  elemento a la pila
+	 * @param n elemento de tipo entero 
+	 * @return true si se ha añadido 
+	 */
 	public boolean push(int n) {
 		this.pila.push(n);
 		return true;
@@ -174,16 +185,26 @@ public class CPU  {
 	}
 	
 	/**
-	 * metodo que indica si la maquina esta parada o no
-	 * @return
+	 * metodo que para la maquina 
+	 * @return true si la maquina esta parada 
 	 */
 	public boolean isHalt() {
-		return this.halt;
+		 this.halt= true;
+		 return true;
 	}
 	
+	/**metodo stopcpu
+	 * 
+	 * @return
+	 */
 	public boolean stopCpu() {
 		return this.halt=true;
 	}
+	
+	/**
+	 * metodo que pone en march la maquina 
+	 * @return si la maquina no esta parada
+	 */
 	public boolean runCpu() {
 		return this.halt = false;
 	}

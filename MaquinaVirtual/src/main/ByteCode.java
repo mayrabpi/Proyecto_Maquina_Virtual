@@ -17,7 +17,7 @@ public class ByteCode {
 	}
 	/**
 	 * 
-	 * @param name
+	 * @param name nombrel del bytecode y paramatreo para las instrucciones de push, store y load
 	 * @param param
 	 */
 	public ByteCode (ENUM_BYTECODE bc, int param ) {
@@ -26,14 +26,14 @@ public class ByteCode {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return nombre del bytecode
 	 */
 	public ENUM_BYTECODE getBytecode() {
 		return this.name;
 	}
 	/**
 	 * 
-	 * @return
+	 * @return retorna el parametro del bytecode 
 	 */
 	public int getParam() {
 		return this.param;

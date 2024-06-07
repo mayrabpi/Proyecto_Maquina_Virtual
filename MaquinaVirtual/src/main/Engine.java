@@ -20,7 +20,7 @@ public class Engine {
 	 * hasta recibir el comando QUIT
 	 */
 	public void start() {
-		String entrada1;
+		String entrada1="";
 		while(!this.end){
 			entrada1= this.entrada.nextLine();
 			Command comand= CommandParser.parse(entrada1);
@@ -37,17 +37,34 @@ public class Engine {
 			
 		}
 	}
+	
+	/**
+	 *  en el que el usuario mete va introsuciendo las instrucciones del programa 
+	 * @param bc bc bytecode 
+	 * @return true si se ha introducido correctamente 
+	 */
 	public boolean commandNewIns(ByteCode bc) {
 			this.program.setInstruccion(bc);
 			System.out.println(this.program.toString());
 			return true;
 		
 	}
+	
+	/**
+	 * comando  que vacia el programa
+	 * @return true si  se ha ejecutado correctamente 
+	 */
 	public boolean commandReset() {
 		this.program.reset();
 		System.out.println(this.program.toString());
 		return true;
 	}
+	
+	/**
+	 * comando que remplaza una instruccion por otra 
+	 * @param n 
+	 * @return true si  se ha ejecutado correctamente 
+	 */
 	public boolean commandReplace(int n) {
 		System.out.println(" Nueva instrucción: ");
 		String entrada1 = this.entrada.nextLine().toUpperCase();
@@ -57,12 +74,21 @@ public class Engine {
 		return true;
 	}
 	
+	/**
+	 * comando que ejecuta las instrucciones que el usuario introduce 
+	 * @return true si  se ha ejecutado correctamente 
+	 */
 	public boolean commandRun() {
 		System.out.println(this.program.runProgram(this.cpu));
 		System.out.println(this.program.toString());
 		
 		return true;
 	}
+	
+	/**
+	 * comando que finaliza el programa
+	 * @return true si  se ha ejecutado correctamente 
+	 */
 	public boolean commandQuit() {
 		System.out.println(this.program.toString());
 		System.out.println(" Fin de la ejecución....");
@@ -70,6 +96,10 @@ public class Engine {
 		return this.end= true;
 	}
 	
+	/**
+	 * comando que muestra el menu con las funcionalidades del programa
+	 * @return true si  se ha ejecutado correctamente 
+	 */
 	public boolean commandHelp() {
 		//System.out.println("Comienza la ejecución de HELP");
 		System.out.println("HELP: Muestra esta ayuda");

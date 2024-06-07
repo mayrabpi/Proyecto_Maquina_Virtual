@@ -18,8 +18,8 @@ public class OperandStack {
 	}
 	
 	/**
-	 * retorna 
-	 * @return
+	 * metodo que imprime los elementos de la pila , si la pila esta vacia imprime vacia
+	 * @return cadena 
 	 */
 	public String toString() {
 		String cadena="Pila: ";
@@ -44,7 +44,7 @@ public class OperandStack {
 	
 	/**
 	 * 
-	 * @param numero se añade
+	 * @param variable numero se añade a la pila
 	 * @return retorna true si se ha podido añadir o false en caso contrario
 	 */
 	public boolean push(int numero) {
@@ -71,20 +71,16 @@ public class OperandStack {
 	}
 	/**
 	 * valor en la cima de la pila 
-	 * @return devuelve el numero almacenado en la cima de la pila 
+	 * @return devuelve el numero almacenado en la cima de la pila si la pila esta vacia devuelve -1
 	 */
 	public int getCima() {
 		if(isEmpty()==false)	
-           return this.stack[this.num_elem];
+           return this.stack[this.num_elem-1];
 		
 		else
 			return -1;
 	}
 	
-	
-	public int getNumElem() {
-		return this.num_elem;
-	}
 
 }
 
