@@ -3,7 +3,7 @@ En este proyecto vamos a crear una versión inicial muy sencilla de nuestra máq
 Al arrancar la aplicación, se iniciarán todas las estructuras de la MV  y se representará un prompt en donde el usuario irá teclenado los distintos comandos que se quieren ejecutar. El conjunto de comandos diponibles serán:
 
 
-.HELP: Que nos muestra informacón sobre los distintos comandos diponIbles.
+.HELP: Que nos muestra informacón sobre los distintos comandos diponibles.
 
  
 ![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/7d8e4a44-dae8-4b4a-91c3-91ecf8726d7b)
@@ -51,6 +51,7 @@ Descripción de MV en la práctica:
 MV está compuesta de dos partes muy simples:
 .Una memoria capaz de almacenar datos.
 .Una pila de operandos en la que se realizan las operaciones. 
+
 
 
 
