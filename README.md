@@ -73,6 +73,29 @@ La MV tiene un cojunto reducido de instrucciones, la mayoría de ellas no tiene 
 ![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/f4c43602-e498-4bde-aca9-d641cda58b08)
 
 
+.ADD, SUB, MUL, DIV: Operaciones artiméticas de suma, resta, multiplicación y división, todas ellas utilizan como operandos la cima y subcima de la pila, tanto la cima y la subcima son sustituidas por el resultado de la oprecion.
+
+
+![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/7f70d02a-0169-4b33-ae36-8a388ae4b806)
+
+Un ejemplo del codigo de la operacion suma : 
+
+![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/f4a90652-f872-4b7c-b27b-a99a5a5059e0)
+
+.OUT: Escribe el entero almacenado en la cima de la pila.
+
+![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/0ad89fff-df5c-48f6-8023-42bb5738a72d)
+
+.HALT: Para la máquina.
+
+![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/564bc537-5fba-4baa-870f-cb9293944827)
+
+
+
+
+
+
+
 
 
 
