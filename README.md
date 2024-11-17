@@ -43,22 +43,7 @@ Este proyecto implementa una máquina virtual simplificada que ejecuta un conjun
 | `OUT`       | Muestra el valor en la cima de la pila |
 | `HALT`      | Detiene la ejecución del programa |
 
-## 🚀 Instalación y Uso
 
-1. Clona el repositorio:
-```bash
-git clone [url-del-repositorio]
-```
-
-2. Compila el proyecto:
-```bash
-javac *.java
-```
-
-3. Ejecuta la aplicación:
-```bash
-java Main
-```
 
 ## 💻 Ejemplo de Uso
 
