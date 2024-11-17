@@ -1,99 +1,124 @@
-Proyecto máquina virtual en java orientada a aprender los conceptos básicos de la orientación a objetos y  a java, uso de arrays y enumerados; manipulacion de cadenas con la clase String; entrada y salida por consola.
-En este proyecto vamos a crear una versión inicial muy sencilla de nuestra máquina virtual. En concreto la apliacación será capaz de ejecutar una serie de comandos itroducidos por el usuario para crear, modificarar y ejecutar programas, donde un programa es una lista de instancias que se representan en la siguiente sección.
-Al arrancar la aplicación, se iniciarán todas las estructuras de la MV  y se representará un prompt en donde el usuario irá teclenado los distintos comandos que se quieren ejecutar. El conjunto de comandos diponibles serán:
+# Máquina Virtual Java - Simulador de ByteCode 🖥️
+
+Un simulador educativo de máquina virtual desarrollado en Java que permite entender los conceptos básicos de programación orientada a objetos, manipulación de estructuras de datos y ejecución de bytecode.
+
+## 📝 Descripción
+
+Este proyecto implementa una máquina virtual simplificada que ejecuta un conjunto básico de instrucciones bytecode. La máquina virtual está diseñada con fines educativos para comprender:
+- Programación Orientada a Objetos en Java
+- Manipulación de Arrays y Enumerados
+- Operaciones con la clase String
+- Entrada/Salida por consola
+- Funcionamiento básico de una máquina virtual
+- Gestión de pilas y memoria
+
+### Componentes Principales
+
+1. **Memoria de Datos**: Almacena valores durante la ejecución del programa
+2. **Pila de Operandos**: Gestiona las operaciones y almacena resultados temporales
+3. **Conjunto de Instrucciones ByteCode**: Implementa operaciones básicas de programación
+
+## 🔧 Características
+
+### Comandos Disponibles
+
+- `.HELP`: Muestra información sobre los comandos disponibles
+- `.QUIT`: Cierra la aplicación
+- `.NEWINST BC`: Añade una nueva instrucción bytecode al programa actual
+- `.RUN`: Ejecuta el programa actual
+- `.RESET`: Inicializa el programa, eliminando todas las instrucciones
+- `.REPLACE n`: Reemplaza la instrucción n del programa por una nueva
+
+### Instrucciones ByteCode Soportadas
+
+| Instrucción | Descripción |
+|-------------|-------------|
+| `PUSH n`    | Apila el entero n en la pila de operandos |
+| `LOAD pos`  | Lee el valor de la memoria en posición pos y lo apila |
+| `STORE pos` | Guarda el valor de la cima de la pila en la memoria |
+| `ADD`       | Suma los dos valores superiores de la pila |
+| `SUB`       | Resta los dos valores superiores de la pila |
+| `MUL`       | Multiplica los dos valores superiores de la pila |
+| `DIV`       | Divide los dos valores superiores de la pila |
+| `OUT`       | Muestra el valor en la cima de la pila |
+| `HALT`      | Detiene la ejecución del programa |
+
+## 🚀 Instalación y Uso
+
+1. Clona el repositorio:
+```bash
+git clone [url-del-repositorio]
+```
+
+2. Compila el proyecto:
+```bash
+javac *.java
+```
+
+3. Ejecuta la aplicación:
+```bash
+java Main
+```
+
+## 💻 Ejemplo de Uso
+
+```
+> .NEWINST PUSH 5
+Programa actual: [PUSH 5]
+
+> .NEWINST PUSH 3
+Programa actual: [PUSH 5, PUSH 3]
+
+> .NEWINST ADD
+Programa actual: [PUSH 5, PUSH 3, ADD]
+
+> .RUN 
+Estado de la máquina:
+  Pila: [5]
+  Pila: [5, 3]
+  Pila: [8]
+```
+
+## 🎓 Valor Educativo
+
+Este proyecto es ideal para aprender:
+- Conceptos básicos de compiladores y máquinas virtuales
+- Estructuras de datos (pilas, arrays)
+- Programación orientada a objetos
+- Manejo de excepciones
+- Entrada/salida por consola
+- Parsing de comandos
+- Testing y depuración
+
+## 🛠️ Requisitos Técnicos
+
+- Java Development Kit (JDK) 8 o superior
+- Entorno de desarrollo Java (recomendado: Eclipse, IntelliJ IDEA, o NetBeans)
+- Conocimientos básicos de programación en Java
+
+## 📚 Documentación
+
+El código fuente está completamente documentado con JavaDoc, incluyendo:
+- Descripción de cada clase y método
+- Ejemplos de uso
+- Manejo de errores
+- Casos especiales
 
 
-.HELP: Que nos muestra informacón sobre los distintos comandos diponibles.
 
- 
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/7d8e4a44-dae8-4b4a-91c3-91ecf8726d7b)
+## ⚠️ Limitaciones Conocidas
 
-
-.QUIT: Cierra la aplicación.
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/3f30cdaa-f8d4-488f-8e46-87c9acd952fb)
+- La memoria tiene un tamaño fijo
+- No soporta operaciones con punto flotante
+- Conjunto limitado de instrucciones bytecode
 
 
-.NEWINST BC: introduce la instrucción bytecode BC al programa actual. Si BC no está correctamente escrito, entonces manda un mensaje de error y no lleva a cabo la inserción.
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/4ef7c665-0589-471b-a1cc-18ddea4dd424)
+## ✍️ Autores
+ Mayra
 
 
 
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/920d00de-9543-425b-af76-2f1b6b7747c7)
-
-
-. RUN: Ejecuta el programa actual. En caso de que se produzca un error de ejecución, avisa al usuario mediante un mensaje.
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/73415c71-6012-4181-a28f-e34ba22bc8b0)
-
-
-.RESET: Inicializa el programa actual eliminando todas las instruccuines almacenadas.
-
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/1c885f09-ed63-4c79-95d3-9a7501d0c01f): 
-
-
-.REPLACE n : Solicita al usuario una nueva insrucción BC, que en caso de ser correcta reemplazará a la instrucción bytecode número N del programa. en este caso hemos reemplazdo la suma por a división el resultado de lo que se queda alamacenado en la pila es la ultima instrucción, que es la división
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/91f3044d-2f6c-4759-852a-9c3cc7050265)
-
-
-Tras la ejecución de cada comando, la apliacación mostrará el programa actual almacenado. Para el caso del comando RUN,  depués de la ejecución de cada una de las instrucciones del programa se mostrará además los estados en los que ha quedado la máquina. Es posible que algún comando falle, en ese caso la aplicación mostrará un mensaje indicando que no ha sido posible la ejecución y pedirá un nuevo comando. La aplicación terminará cuando se ejecute el comando QUIT.
-
-Descripción de MV en la práctica:
-
-MV está compuesta de dos partes muy simples:
-
-Una memoria capaz de almacenar datos.
-
-Una pila de operandos en la que se realizan las operaciones. Gran parte de las distitas instrucciones bytecode de la máquina virtual trabajan sobre la pila de operandos, cogiendo de ella valores y/o dejando en ella resultados.
-
-La MV tiene un cojunto reducido de instrucciones, la mayoría de ellas no tiene parametros (pues trabajan directamente con la pila de operandos). Sólo unas pocas de ellas tienen un parámetro de tipo entero. El conjunto de instrucciones Bytecode admitidas es:
-
-
-. PUSH n: Apila en la pila de operandos el entero n.
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/8ae4be94-94d5-4f27-a96f-d62c96b36313)
-
-.LOAD pos: Lee de la memoria el valor almacenado en pos y lo apila en la pila de operandos.
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/96ee80a2-d5c4-44e9-9fbf-cd3d7f79eaac)
-
-
-.STORE pos: Escribe en la posición pos de la memoria el contenido de la cima de la pila de operandos, y lo elimina de ella.
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/f4c43602-e498-4bde-aca9-d641cda58b08)
-
-
-.ADD, SUB, MUL, DIV: Operaciones artiméticas de suma, resta, multiplicación y división, todas ellas utilizan como operandos la cima y subcima de la pila, tanto la cima y la subcima son sustituidas por el resultado de la oprecion.
-
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/7f70d02a-0169-4b33-ae36-8a388ae4b806)
-
-Un ejemplo del codigo de la operacion suma : 
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/f4a90652-f872-4b7c-b27b-a99a5a5059e0)
-
-.OUT: Escribe el entero almacenado en la cima de la pila.
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/0ad89fff-df5c-48f6-8023-42bb5738a72d)
-
-.HALT: Para la máquina.
-
-![image](https://github.com/mayrabpi/proyecto_Maquina_Virtual/assets/145108717/564bc537-5fba-4baa-870f-cb9293944827)
-
-
-
-
-
+---
 
 
 
